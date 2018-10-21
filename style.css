@@ -147,17 +147,22 @@ body {
     color: #8495b7;
     position: relative;
     margin-bottom: 20px;
+   
 }
 
 .input-group__input {
     width: 100%;
     outline: none;
+    border: none;
+    border-bottom: 1px solid #cbd2df;
+    padding: 20px 0;
 }
 
 .input-group__label {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    transition: .2s linear;
 }
 
 .input-group__label-text {
@@ -174,13 +179,20 @@ body {
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
+    fill: #8495b7;
+    fill-rule:evenodd;
+    transition: .2s linear;
 }
 
-.login_email_label:before {
-    content: "";
-    height: 2px;
-    background:  rgb(73, 171, 254);
-    width: 10%;
-    display: block;
-    margin-bottom: 20px;
+.input-group.input-group--active .input-group__label {
+    top: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: translateY(0);
+ 
 }
+
+.input-group.input-group--active .input-group__icon {
+    fill: #49abfe;
+}
+
