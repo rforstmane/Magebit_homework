@@ -35,25 +35,25 @@
             </div>
         </div>
     </div>
-    
+
     <div class="login">
         <div class="login_title">
             <h2>Login</h2>
             <img src="images/logo.png" alt="logo">
         </div>
-        <span class="login_email">
-            <input class="login_email_input" type="text">
-            <label class="login_email_label">
-                <span class="login_email_label_text">Email*</span>
-                <img src="images/ic_mail.svg">
+        <div class="input-group">
+            <input class="input-group__input" type="email">
+            <label class="input-group__label">
+                <span class="input-group__label-text">Email</span>
             </label>
-        </span>
-        <div class="login_email">
-            <input class="login_email_input" type="text">
-            <label class="login_email_label">
-                <span class="login_email_label_text">Password*</span>
-                <img src="images/ic_lock.svg">
+            <img class="input-group__icon" src="images/ic_lock.svg" draggable="false">
+        </div>
+        <div class="input-group input-group--active">
+            <input class="input-group__input" type="password">
+            <label class="input-group__label">
+                <span class="input-group__label-text">Password</span>
             </label>
+            <img class="input-group__icon" src="images/ic_lock.svg" draggable="false">
         </div>
         <a href="#" class="login_inside_button">LOGIN</a>
         <a href="#" class="accounts_inside_forgot">Forgot?</a>

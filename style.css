@@ -143,17 +143,40 @@ body {
     margin-bottom: 20px;
 }
 
-.login_email_input {
-    border: none;
+.input-group {
+    color: #8495b7;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group__input {
+    width: 100%;
     outline: none;
 }
 
-.login_email_label {
-    display: flex;
-    justify-content: space-between;
+.input-group__label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.login_email_label:after {
+.input-group__label-text {
+    font-size: 16px;
+}
+
+.input-group__label-text:after {
+    content: "*";
+    color: #f44368;
+}
+
+.input-group__icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.login_email_label:before {
     content: "";
     height: 2px;
     background:  rgb(73, 171, 254);
