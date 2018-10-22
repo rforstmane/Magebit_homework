@@ -126,14 +126,13 @@ body {
 
 @media (min-width: 550px) {
     .background {
-    height: 100vh;
+        height: 100vh;
    }
 
     .accounts {
         display: flex;
         max-width: 800px;
         padding: 40px;
-        
     }
 }
 
@@ -159,14 +158,12 @@ body {
     display: block;
     position: absolute;
     bottom: 0;
-    
 }
 
 .input-group {
     color: #8495b7;
     position: relative;
     margin-bottom: 20px;
-   
 }
 
 .input-group__input {
@@ -175,6 +172,7 @@ body {
     border: none;
     border-bottom: 1px solid #cbd2df;
     padding: 20px 0;
+    background: transparent;
 }
 
 .input-group__label {
@@ -182,6 +180,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     transition: .2s linear;
+    z-index: -1;
 }
 
 .input-group__label-text {
@@ -201,6 +200,7 @@ body {
     fill: #8495b7;
     fill-rule:evenodd;
     transition: .2s linear;
+    z-index: -1;
 }
 
 .input-group.input-group--active .input-group__label {
@@ -208,17 +208,12 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     transform: translateY(0);
- 
 }
 
 .input-group.input-group--active .input-group__icon {
     fill: #49abfe;
 }
 
-.login-group {
- 
-    
-}
 
 .login-group__button {
     background-color: #f89a35;
@@ -231,7 +226,6 @@ body {
     width: 50%;
     display: inline-block;
     text-align: center;
-    
 }
 
 .login-group__button:hover {
