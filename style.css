@@ -148,16 +148,17 @@ body {
     color: #3e495e;
     margin-bottom: 20px;
     position: relative;
+    padding-bottom: 30px;
 }
 
 .login-title:after {
     content: "";
     height: 2px;
     background:  #49abfe;
-    width: 10%;
+    width: 20%;
     display: block;
-    margin-bottom: 20px;
     position: absolute;
+    bottom: 0;
     
 }
 
