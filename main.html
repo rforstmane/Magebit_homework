@@ -37,7 +37,7 @@
     </div>
 
     <div class="login">
-        <div class="login_title">
+        <div class="login-title">
             <h2>Login</h2>
             <img src="images/logo.png" alt="logo">
         </div>
@@ -46,17 +46,63 @@
             <label class="input-group__label">
                 <span class="input-group__label-text">Email</span>
             </label>
-            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14"><path id="ic_mail" d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z" transform="translate(-790 -188)" /></svg>
+            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
+                <path id="ic_mail" d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z"
+                    transform="translate(-790 -188)" /></svg>
         </div>
         <div class="input-group input-group--active">
             <input class="input-group__input" type="password">
             <label class="input-group__label">
                 <span class="input-group__label-text">Password</span>
             </label>
-            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17"><path id="ic_lock" d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z" transform="translate(-826 -162)" /></svg>
+            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17">
+                <path id="ic_lock" d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z"
+                    transform="translate(-826 -162)" /></svg>
         </div>
-        <a href="#" class="login_inside_button">LOGIN</a>
-        <a href="#" class="accounts_inside_forgot">Forgot?</a>
+        <div class="login-group">
+            <a href="#" class="login-group__button">LOGIN</a>
+            <a href="#" class="login-group__forgot">Forgot?</a>
+        </div>
+    </div>
+
+    <div class="login">
+        <div class="login-title">
+            <h2>Sign Up</h2>
+            <img src="images/logo.png" alt="logo">
+        </div>
+        <div class="input-group">
+            <input class="input-group__input" type="email">
+            <label class="input-group__label">
+                <span class="input-group__label-text">Name</span>
+            </label>
+            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="16"><image id="ic_user" width="14" height="16" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAABC0lEQVQokY2SMUtCURiGnxthU+ZSSM2iP8E5oiHKQQncnQVHQUeVpprazD/gaKCo4NrQHwhzbmkQalc+eA9cTye5H3zcc97vfc55Odyo8zzGqxzwAFxJngNNYBm3HXpQHngDMjGtDFwCReDDiQce2BNkMc7VY2m9uNEHXbwa8KWuSbveB4ZqExJ9cK5vH8gCF8CLtGnc6D9OSw9xo5iu1pr9e+M3MAskm2gWBCvAJ3AfAKvASp4d0IQhcAKMFPdYbetXIC1PxYGnwACIgDZQAhbAr9rWd5pF8p4ZWNdpdmo3ENOVzSyNeRsG2g1Wj3sgV09a3BpY0OY9Aeg8eQOPtPlJADpPKskv97eALUDBLpDLydEKAAAAAElFTkSuQmCC"/></svg>
+        </div>
+        <div class="input-group">
+            <input class="input-group__input" type="email">
+            <label class="input-group__label">
+                <span class="input-group__label-text">Email</span>
+            </label>
+            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
+                <path id="ic_mail" d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z"
+                    transform="translate(-790 -188)" /></svg>
+        </div>
+        <div class="input-group input-group--active">
+            <input class="input-group__input" type="password">
+            <label class="input-group__label">
+                <span class="input-group__label-text">Password</span>
+            </label>
+            <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17">
+                <path id="ic_lock" d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z"
+                    transform="translate(-826 -162)" /></svg>
+        </div>
+        <div class="login-group">
+            <a href="#" class="login-group__button">LOGIN</a>
+        </div>
+
+        <button onclick="myFunction()">Uzspied</button> 
+        <div id="renda">
+            Šis ir toggle
+        </div>
     </div>
 
 
