@@ -71,13 +71,21 @@ body {
     background-color: #1b2347;
     opacity: 0.9;
     color: #ffffff;
+
 }
 
 
-.accounts_inside {
+.accounts_inside--signup, .accounts_inside--login{
     flex: 1;
     padding: 30px;
+
 }
+
+.accounts_inside--login {
+    position: relative;
+    
+}
+
 
 .accounts_inside_title h2 {
     margin-bottom: 30px;
@@ -105,8 +113,8 @@ body {
     
 }
 
-.accounts_inside_button {
-    border: 1px solid #49abfe;
+.accounts_inside_button--signup, .accounts_inside_button--login {
+    border: 2px solid #49abfe;
     border-radius: 25px;
     font-size: 13px;
     padding: 18px;
@@ -119,7 +127,7 @@ body {
 }
 
 
-.accounts_inside_button:hover {
+.accounts_inside_button--signup:hover, .accounts_inside_button--login:hover {
     background-color: #49abfe;
 }
 
@@ -136,9 +144,21 @@ body {
     }
 }
 
-.login {
+.login--login, .login--signup {
     flex: 1;
     padding: 30px;
+    background-color: #ffffff;
+}
+
+.login--login, .login--signup{
+    
+}
+ 
+.login--login {
+    position: absolute;
+    top: 0;
+  
+
 }
 
 .login-title {
@@ -180,7 +200,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     transition: .2s linear;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 .input-group__label-text {
@@ -200,7 +220,7 @@ body {
     fill: #8495b7;
     fill-rule:evenodd;
     transition: .2s linear;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 .input-group.input-group--active .input-group__label {
