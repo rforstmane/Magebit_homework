@@ -24,7 +24,7 @@ function blurHandler(){
 // $('.login--signup').hide();
 $('.button').on('click',
   function() {
-    $('.login--login, .login--signup').toggle(2000);
+    $('.login--login, .form').toggle(2000);
   }
 );
 
