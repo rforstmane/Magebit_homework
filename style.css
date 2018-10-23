@@ -151,15 +151,11 @@ body {
 }
 
 .login--login, .login--signup{
-    
-}
- 
-.login--login {
     position: absolute;
     top: 0;
   
-
 }
+
 
 .login-title {
     display: flex;

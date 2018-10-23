@@ -21,7 +21,7 @@ function blurHandler(){
     }
 }
 
-$('.login--signup').hide();
+// $('.login--signup').hide();
 $('.accounts_inside_button--signup').on('click',
   function() {
     $('.login--login, .login--signup').toggle(2000);
