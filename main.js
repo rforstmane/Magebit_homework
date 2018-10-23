@@ -20,3 +20,11 @@ function blurHandler(){
         this.parentElement.classList.remove("input-group--active")
     }
 }
+
+$('.login--signup').hide();
+$('.accounts_inside_button--signup').on('click',
+  function() {
+    $('.login--login, .login--signup').toggle(2000);
+  }
+);
+
