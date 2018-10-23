@@ -54,10 +54,9 @@ table {
 body {
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
-    
 }
 
-.background {
+.wrapper {
     background-image: url("images/background.jpg");
     background-size: cover;
     background-position: center;
@@ -67,53 +66,47 @@ body {
     justify-content: center;
 }
 
-.accounts {
+.auth-form {
     background-color: #1b2347;
     opacity: 0.9;
     color: #ffffff;
-
 }
 
-
-.accounts_inside--signup, .accounts_inside--login{
+.auth-form__column{
     flex: 1;
     padding: 30px;
-
 }
 
-.accounts_inside--login {
-    position: relative;
-    
-}
-
-
-.accounts_inside_title h2 {
+.auth-form__title {
     margin-bottom: 30px;
+    padding-bottom: 30px;
     font-size: 28px;
     font-weight: 300;
+    position: relative;
 }
-.accounts_inside_title, .login-title {
+
+.login-title {
     font-size: 28px;
     font-weight: 300;
 }
 
-.accounts_inside_title:after {
+.auth-form__title:after {
     content: "";
     height: 2px;
     background:  #49abfe;
     width: 10%;
     display: block;
-    margin-bottom: 30px;
+    position: absolute;
+    bottom: 0;
 }
 
-.accounts_inside_text {
+.auth-form__text {
     line-height: 35px;
     margin-bottom: 20px;
     font-size: 16px;
-    
 }
 
-.accounts_inside_button--signup, .accounts_inside_button--login {
+.button, .button {
     border: 2px solid #49abfe;
     border-radius: 25px;
     font-size: 13px;
@@ -126,18 +119,16 @@ body {
     text-align: center;
 }
 
-
-.accounts_inside_button--signup:hover, .accounts_inside_button--login:hover {
+.button:hover, .button:hover {
     background-color: #49abfe;
 }
 
-
 @media (min-width: 550px) {
-    .background {
+    .wrapper {
         height: 100vh;
    }
 
-    .accounts {
+    .auth-form {
         display: flex;
         max-width: 800px;
         padding: 40px;
@@ -153,9 +144,7 @@ body {
 .login--login, .login--signup{
     position: absolute;
     top: 0;
-  
 }
-
 
 .login-title {
     display: flex;
@@ -196,7 +185,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     transition: .2s linear;
-    /* z-index: -1; */
+     /*z-index: -1;*/
 }
 
 .input-group__label-text {
@@ -230,7 +219,6 @@ body {
     fill: #49abfe;
 }
 
-
 .login-group__button {
     background-color: #f89a35;
     border-radius: 25px;
@@ -255,7 +243,6 @@ body {
     float: right;
     top: -50%;
     transform: translateY(100%);
-
 }
 
 .poga {

@@ -22,7 +22,7 @@ function blurHandler(){
 }
 
 // $('.login--signup').hide();
-$('.accounts_inside_button--signup').on('click',
+$('.button').on('click',
   function() {
     $('.login--login, .login--signup').toggle(2000);
   }

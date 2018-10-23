@@ -2,104 +2,114 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Magebit homework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-    <div class="background">
-        <div class="accounts">
-            <div class="accounts_inside--signup">
-                <div class="accounts_inside_title">
-                    <h2>Don't have an account?</h2>
+<div class="wrapper">
+    <div class="auth-form">
+        <div class="auth-form__column">
+            <h2 class="auth-form__title">
+                Don't have an account?
+            </h2>
+            <p class="auth-form__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidunt ut
+                labore et dolore magna aliqua.
+            </p>
+            <a href="#" class="button" id="js-form-left">SIGN UP</a>
+            <div class="login--signup">
+                <div class="login-title">
+                    <h2>Sign Up</h2>
+                    <img src="images/logo.png" alt="logo">
                 </div>
-                <div class="accounts_inside_text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidunt ut
-                        labore et dolore magna aliqua.</p>
+                <div class="input-group">
+                    <input class="input-group__input" type="name">
+                    <label class="input-group__label">
+                        <span class="input-group__label-text">Name</span>
+                    </label>
+                    <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="14" height="16">
+                        <path id="ic_user"
+                              d="M869 180a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2zm5 14v-2a5 5 0 0 0-10 0v2h-2v-2a7 7 0 0 1 14 0v2h-2z"
+                              transform="translate(-862 -180)"/>
+                    </svg>
                 </div>
-                <a href="#" class="accounts_inside_button--signup">SIGN UP</a>
-                <div class="login--signup">
-                    <div class="login-title">
-                        <h2>Sign Up</h2>
-                        <img src="images/logo.png" alt="logo">
-                    </div>
-                    <div class="input-group">
-                        <input class="input-group__input" type="name">
-                        <label class="input-group__label">
-                            <span class="input-group__label-text">Name</span>
-                        </label>
-                        <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="14" height="16">
-                            <path id="ic_user" d="M869 180a4 4 0 1 1-4 4 4 4 0 0 1 4-4zm0 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2zm5 14v-2a5 5 0 0 0-10 0v2h-2v-2a7 7 0 0 1 14 0v2h-2z"
-                                transform="translate(-862 -180)" /></svg>
-                    </div>
-                    <div class="input-group">
-                        <input class="input-group__input" type="email">
-                        <label class="input-group__label">
-                            <span class="input-group__label-text">Email</span>
-                        </label>
-                        <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
-                            <path id="ic_mail" d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z"
-                                transform="translate(-790 -188)" /></svg>
-                    </div>
-                    <div class="input-group">
-                        <input class="input-group__input" type="password">
-                        <label class="input-group__label">
-                            <span class="input-group__label-text">Password</span>
-                        </label>
-                        <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17">
-                            <path id="ic_lock" d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z"
-                                transform="translate(-826 -162)" /></svg>
-                    </div>
-                    <div class="login-group">
-                        <a href="#" class="login-group__button">SIGN UP</a>
-                    </div>
-        
+                <div class="input-group">
+                    <input class="input-group__input" type="email">
+                    <label class="input-group__label">
+                        <span class="input-group__label-text">Email</span>
+                    </label>
+                    <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
+                        <path id="ic_mail"
+                              d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z"
+                              transform="translate(-790 -188)"/>
+                    </svg>
+                </div>
+                <div class="input-group">
+                    <input class="input-group__input" type="password">
+                    <label class="input-group__label">
+                        <span class="input-group__label-text">Password</span>
+                    </label>
+                    <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17">
+                        <path id="ic_lock"
+                              d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z"
+                              transform="translate(-826 -162)"/>
+                    </svg>
+                </div>
+                <div class="login-group">
+                    <a href="#" class="login-group__button">SIGN UP</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="auth-form__column">
+            <div class="auth-form__title">
+                <h2>Have an account?</h2>
+            </div>
+            <div class="auth-form__text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <a href="#" class="button" id="js-form-right">LOGIN</a>
+            <div class="login login--login">
+                <div class="login-title">
+                    <h2>Login</h2>
+                    <img src="images/logo.png" alt="logo">
+                </div>
+                <div class="input-group">
+                    <input class="input-group__input" type="email">
+                    <label class="input-group__label">
+                        <span class="input-group__label-text">Email</span>
+                    </label>
+                    <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
+                        <path id="ic_mail"
+                              d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z"
+                              transform="translate(-790 -188)"/>
+                    </svg>
+                </div>
+                <div class="input-group">
+                    <input class="input-group__input" type="password">
+                    <label class="input-group__label">
+                        <span class="input-group__label-text">Password</span>
+                    </label>
+                    <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17">
+                        <path id="ic_lock"
+                              d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z"
+                              transform="translate(-826 -162)"/>
+                    </svg>
+                </div>
+                <div class="login-group">
+                    <a href="#" class="login-group__button">LOGIN</a>
+                    <a href="#" class="login-group__forgot">Forgot?</a>
                 </div>
             </div>
-            <div class="accounts_inside--login">
-                <div class="accounts_inside_title">
-                    <h2>Have an account?</h2>
-                </div>
-                <div class="accounts_inside_text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <a href="#" class="accounts_inside_button--login">LOGIN</a>
-                <div class="login--login">
-                    <div class="login-title">
-                        <h2>Login</h2>
-                        <img src="images/logo.png" alt="logo">
-                    </div>
-                    <div class="input-group">
-                        <input class="input-group__input" type="email">
-                        <label class="input-group__label">
-                            <span class="input-group__label-text">Email</span>
-                        </label>
-                        <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
-                            <path id="ic_mail" d="M790 188h16v14h-16v-14zm2 2h12v10h-12v-10zm12.989.352l-6.637 6.637-.352-.352-.352.352-6.637-6.637 1.341-1.341 5.648 5.648 5.648-5.648z"
-                                transform="translate(-790 -188)" /></svg>
-                    </div>
-                    <div class="input-group">
-                        <input class="input-group__input" type="password">
-                        <label class="input-group__label">
-                            <span class="input-group__label-text">Password</span>
-                        </label>
-                        <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="17">
-                            <path id="ic_lock" d="M826 169h16v10h-16v-10zm2 2h12v6h-12v-6zm9-1v-3a3 3 0 0 0-6 0v3h-2v-3a5 5 0 0 1 10 0v3h-2z"
-                                transform="translate(-826 -162)" /></svg>
-                    </div>
-                    <div class="login-group">
-                        <a href="#" class="login-group__button">LOGIN</a>
-                        <a href="#" class="login-group__forgot">Forgot?</a>
-                    </div>
-                </div>
-            </div>
-        </div> 
+        </div>
+    </div>
 
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
