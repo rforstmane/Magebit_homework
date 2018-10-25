@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -181,7 +181,13 @@ body {
     }
 
     .form {
-
+        padding: 0;
+    }
+    .auth-form__modal--login .form--login,
+    .auth-form__modal--signup .form--login,
+    .auth-form__modal--login .form--signup,
+    .auth-form__modal--signup .form--signup {
+        display: block;
     }
 
     .auth-form__modal--login .form--login {
@@ -190,7 +196,7 @@ body {
         right: 70px;
         top: 50%;
         transform: translate(0, -50%);
-        transition: 0.8s linear;
+        transition: all 414.494ms linear 385.506ms;
     }
 
     .auth-form__modal--signup .form--login {
@@ -200,7 +206,7 @@ body {
         top: 50%;
         transform: translate(-30px, -50%);
         opacity: 0;
-        transition: all 423.361ms linear 376.639ms;
+        transition: all 502.534ms linear 0ms;
         pointer-events: none;
     }
 
@@ -210,7 +216,7 @@ body {
         right: 70px;
         top: 50%;
         transform: translate(0, -50%);
-        transition: 0.8s linear;
+        transition: all 414.494ms linear 385.506ms;
         opacity: 1;
     }
 
@@ -220,7 +226,7 @@ body {
         right: 70px;
         top: 50%;
         transform: translate(-30px, -50%);
-        transition: all 423.361ms linear 376.639ms;
+        transition: all 502.534ms linear 0ms;
         opacity: 0;
         pointer-events: none;
     }
