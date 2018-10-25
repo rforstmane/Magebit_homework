@@ -79,7 +79,7 @@ body {
 
 .auth-form__column {
     flex: 1;
-    padding: 30px;
+    padding: 70px 80px;
 }
 
 .auth-form__title {
@@ -156,8 +156,7 @@ body {
 
     .auth-form {
         display: flex;
-        max-width: 800px;
-        padding: 40px;
+        max-width: 920px;
         position: relative;
     }
 
@@ -192,8 +191,8 @@ body {
 
     .auth-form__modal--login .form--login {
         position: absolute;
-        left: 70px;
-        right: 70px;
+        left: 90px;
+        right: 90px;
         top: 50%;
         transform: translate(0, -50%);
         transition: all 414.494ms linear 385.506ms;
@@ -201,8 +200,8 @@ body {
 
     .auth-form__modal--signup .form--login {
         position: absolute;
-        left: 70px;
-        right: 70px;
+        left: 90px;
+        right: 90px;
         top: 50%;
         transform: translate(-30px, -50%);
         opacity: 0;
@@ -212,8 +211,8 @@ body {
 
     .auth-form__modal--signup .form--signup {
         position: absolute;
-        left: 70px;
-        right: 70px;
+        left: 90px;
+        right: 90px;
         top: 50%;
         transform: translate(0, -50%);
         transition: all 414.494ms linear 385.506ms;
@@ -222,8 +221,8 @@ body {
 
     .auth-form__modal--login .form--signup {
         position: absolute;
-        left: 70px;
-        right: 70px;
+        left: 90px;
+        right: 90px;
         top: 50%;
         transform: translate(-30px, -50%);
         transition: all 502.534ms linear 0ms;
