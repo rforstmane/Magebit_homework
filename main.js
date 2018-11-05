@@ -1,24 +1,24 @@
-"use strict";
-let inputs =  document.getElementsByClassName("input-group__input")
+let inputs = document.getElementsByClassName("input-group__input");
 
-for(let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("focus", focusHandler)
-    inputs[i].addEventListener("blur", blurHandler)
+    for(let i=0; i<inputs.length; i++){
+        $(inputs[i]).on("focus", focusHandler);
+        $(inputs[i]).on("blur", blurHandler);
 
-    if (inputs[i].value !== "") {
-        inputs[i].parentElement.classList.add("input-group--active")
+        if (inputs[i].value !== "") {
+            $(inputs[i]).parent.addClass("input-group--active");
+        }
     }
-}
 
-function focusHandler(){
-    this.parentElement.classList.add("input-group--active")
+function focusHandler() {
+    $(this).parent().addClass("input-group--active");
 }
-
-function blurHandler(){
-    if (this.value === "") {
-        this.parentElement.classList.remove("input-group--active")
+function blurHandler() {
+    if (this.value === ""){
+        $(this).parent().removeClass("input-group--active");
     }
+
 }
+
 
 $("#js-form-right").on("click", function() {
     $(".auth-form__modal").addClass("auth-form__modal--login")
