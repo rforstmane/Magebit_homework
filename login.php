@@ -1,5 +1,6 @@
 <?php include('connect.php'); ?>
 <form id="login-form" class="form form--login" method="POST" action="login.php">
+    <?php include('errors.php'); ?>
     <div class="form__title">
         <h2>Login</h2>
         <img src="images/logo.png" alt="logo">
