@@ -1,3 +1,4 @@
+<?php include('connect.php'); ?>
 <form id="login-form" class="form form--login" method="POST" action="login.php">
     <div class="form__title">
         <h2>Login</h2>

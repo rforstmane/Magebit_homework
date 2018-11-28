@@ -1,3 +1,5 @@
+<?php  include('connect.php'); ?>
+
 <form id="signup-form" class="form form--signup" method="POST" action="signup.php">
     <div class="form__title">
         <h2>Sign Up</h2>
