@@ -1,6 +1,7 @@
 <?php  include('connect.php'); ?>
 
 <form id="signup-form" class="form form--signup" method="POST" action="signup.php">
+    <?php include('errors.php'); ?>
     <div class="form__title">
         <h2>Sign Up</h2>
         <img src="images/logo.png" alt="logo">
