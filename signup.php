@@ -1,10 +1,10 @@
-<form id="signup-form" class="form form--signup" method="POST">
+<form id="signup-form" class="form form--signup" method="POST" action="signup.php">
     <div class="form__title">
         <h2>Sign Up</h2>
         <img src="images/logo.png" alt="logo">
     </div>
     <div class="input-group">
-        <input class="input-group__input" type="name">
+        <input class="input-group__input" type="name" name="name">
         <label class="input-group__label">
             <span class="input-group__label-text">Name</span>
         </label>
@@ -15,7 +15,7 @@
         </svg>
     </div>
     <div class="input-group">
-        <input class="input-group__input" type="email">
+        <input class="input-group__input" type="email" name="email">
         <label class="input-group__label">
             <span class="input-group__label-text">Email</span>
         </label>
@@ -26,7 +26,7 @@
         </svg>
     </div>
     <div class="input-group">
-        <input class="input-group__input" type="password">
+        <input class="input-group__input" type="password" name="password">
         <label class="input-group__label">
             <span class="input-group__label-text">Password</span>
         </label>
@@ -37,7 +37,7 @@
         </svg>
     </div>
     <div class="login-group">
-        <a href="#" class="login-group__button">SIGN UP</a>
+        <button class="login-group__button" type="submit" name="signup" >SIGN UP</button>
     </div>
 
 </form>
