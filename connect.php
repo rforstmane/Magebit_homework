@@ -46,17 +46,17 @@
         if (count($errors) == 0) {
             $password = md5($password);
             $query = "SELECT * FROM users WHERE email='$email' AND password='$password' ";
+            $result = mysqli_query($connect, $query);
 //            var_dump($query);
 //            die();
-            $result = mysqli_query($connect, $query);
             if (mysqli_num_rows($result) == 1) {
 
-
+                $_SESSION['email'] = $email;
                 $_SESSION['success'] = "You are logged in";
                 header('location: logged_in.php');
             } else {
                 array_push($errors, "Wrong email or password");
-                header('location: login.php');
+//                header('location: login.php');
             }
         }
 
