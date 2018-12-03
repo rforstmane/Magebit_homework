@@ -1,11 +1,12 @@
 <?php  include('connect.php'); ?>
 
-<form id="signup-form" class="form form--signup" method="POST" action="signup.php">
-    <?php include('errors.php'); ?>
+<form id="signup-form" class="form form--signup" method="POST" action="main.php">
+
     <div class="form__title">
         <h2>Sign Up</h2>
         <img src="images/logo.png" alt="logo">
     </div>
+    <?php include('errors.php'); ?>
     <div class="input-group">
         <input autocomplete="off" class="input-group__input" type="name" name="name" value="<?php echo $name; ?>">
         <label class="input-group__label">

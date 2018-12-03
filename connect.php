@@ -21,6 +21,7 @@ if (isset($_POST['signup'])) {
         array_push($errors, "Password is required");
     }
 
+
     $user_check = "SELECT * FROM users WHERE email='$email' LIMIT 1 ";
     $results = mysqli_query($connect, $user_check);
     $user = mysqli_fetch_assoc($results);
@@ -48,13 +49,12 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($connect, $_POST['password']);
 
     if (empty($email)) {
-        $_SESSION['email_error'] = "Email is required";
-        $errors++;
+        array_push($errors, "Email is required");
+
     }
     if (empty($password)) {
-//        array_push($errors, "Password is required");
-        $_SESSION['password_error'] = "Password is required";
-        $errors++;
+        array_push($errors, "Password is required");
+
     }
 
     if (count($errors) == 0) {
@@ -75,6 +75,8 @@ if (isset($_POST['login'])) {
     }
 
 }
+
+
 
 if (isset($_GET['logout'])) {
     session_destroy();
