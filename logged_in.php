@@ -3,9 +3,10 @@
 <html>
 <head>
     <title>Magebit homework</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
 </head>
 <body>
-    <div>
+    <div class="wrapper">
         <?php if (isset($_SESSION['success'])): ?>
             <?php
                 echo $_SESSION['success'];
