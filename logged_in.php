@@ -14,10 +14,11 @@
             ?>
         <?php endif; ?>
 
-        <?php if (isset($_SESSION['email'])): ?>
-            <p>Welcome, <?php echo $_SESSION['email']; ?></p>
-            <p><a href="logged_in.php?logout='1">Logout</a> </p>
+        <?php if (isset($_SESSION['name'])): ?>
+            <p>Welcome, <?php echo $_SESSION['name']; ?></p>
+            <a href="logged_in.php?logout='1'">Logout</a>
         <?php endif; ?>
+
     </div>
 </body>
 </html>

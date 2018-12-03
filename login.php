@@ -1,14 +1,18 @@
 <?php include('connect.php'); ?>
-<form id="login-form" class="form form--login" method="POST" action="login.php">
-    <?php include('errors.php'); ?>
+<form id="login-form" class="form form--login" method="POST" action="main.php">
+
     <div class="form__title">
         <h2>Login</h2>
         <img src="images/logo.png" alt="logo">
     </div>
+    <?php include('errors.php'); ?>
     <div class="input-group">
-        <input class="input-group__input" type="email" name="email">
+        <input autocomplete="off" class="input-group__input" type="email" name="email" value="<?php echo $email; ?>">
+
+
         <label class="input-group__label">
             <span class="input-group__label-text">Email</span>
+
         </label>
         <svg class="input-group__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
             <path id="ic_mail"
@@ -18,6 +22,7 @@
     </div>
     <div class="input-group">
         <input class="input-group__input" type="password" name="password">
+
         <label class="input-group__label">
             <span class="input-group__label-text">Password</span>
         </label>
