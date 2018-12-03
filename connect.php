@@ -45,7 +45,7 @@
 
         if (count($errors) == 0) {
             $password = md5($password);
-            $query = "SELECT * FROM users WHERE email='$email' AND password='$password' ";
+            $query = "SELECT * FROM users WHERE email='$email' AND password='$password' "
             $result = mysqli_query($connect, $query);
 //            var_dump($query);
 //            die();

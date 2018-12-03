@@ -7,7 +7,7 @@
         <img src="images/logo.png" alt="logo">
     </div>
     <div class="input-group">
-        <input class="input-group__input" type="name" name="name" value="<?php echo $name; ?>">
+        <input autocomplete="off" class="input-group__input" type="name" name="name" value="<?php echo $name; ?>">
         <label class="input-group__label">
             <span class="input-group__label-text">Name</span>
         </label>
@@ -18,7 +18,7 @@
         </svg>
     </div>
     <div class="input-group">
-        <input class="input-group__input" type="email" name="email" value="<?php echo $email; ?>">
+        <input autocomplete="off" class="input-group__input" type="email" name="email" value="<?php echo $email; ?>">
         <label class="input-group__label">
             <span class="input-group__label-text">Email</span>
         </label>
