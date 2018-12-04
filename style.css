@@ -336,19 +336,29 @@ body {
     transform: translateY(100%);
 }
 
-.logout {
-    text-decoration: none;
-    float: right;
-    margin-right: 20px;
-    margin-top: 20px;
-    color: #3e495e;
-}
-
-.logout:hover {
-    font-weight: bold;
-}
-
 .footer {
     margin-top: auto;
     padding: 5px 0;
+}
+
+.nav {
+    width: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.nav__link {
+    text-decoration: none;
+    margin-left: 20px;
+    color: #3e495e;
+}
+
+.main {
+    width: 100%;
+    flex: 1 0 auto;
+    background-color: rgba(0,0,0,0.4);
+    color: #ffffff;
+    padding: 20px;
 }

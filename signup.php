@@ -1,5 +1,3 @@
-<?php // include('connect.php'); ?>
-
 <form id="signup-form" class="form form--signup" method="POST" action="main.php">
 
     <div class="form__title">
@@ -41,7 +39,7 @@
         </svg>
     </div>
     <div class="login-group">
-        <button class="login-group__button" type="submit" name="signup" >SIGN UP</button>
+        <button class="login-group__button" type="submit" name="signup" value="foo" >SIGN UP</button>
     </div>
 
 </form>

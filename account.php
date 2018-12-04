@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <a href="logged_in.php?logout='1'" class="logout">SIGN OUT</a>
+    <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
 </div>
 
 

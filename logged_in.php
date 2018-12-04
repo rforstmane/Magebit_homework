@@ -16,11 +16,11 @@
         <?php endif; ?>
 
         <?php if (isset($_SESSION['name'])): ?>
-            <p>Welcome, <?php echo $_SESSION['name']; ?>!</p>
-        <div class="nav">
-            <a href="logged_in.php?logout='1'" class="logout">SIGN OUT</a>
-            <a href="account.php" class="logout">MY ACCOUNT</a>
-        </div>
+            <nav class="nav">
+                <a href="account.php" class="nav__link">MY ACCOUNT</a>
+                <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
+            </nav>
+            <main class="main">Welcome, <?php echo $_SESSION['name']; ?>!</main>
 
         <?php endif; ?>
 

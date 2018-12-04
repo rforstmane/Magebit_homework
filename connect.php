@@ -43,8 +43,7 @@ if (isset($_POST['signup'])) {
     }
 }
 
-if (isset($_POST['login'])) {
-
+if (isset($_POST['login']) && !empty($_POST['login'])) {
     $email = mysqli_real_escape_string($connect, $_POST['email']);
     $password = mysqli_real_escape_string($connect, $_POST['password']);
 
