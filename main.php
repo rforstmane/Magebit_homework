@@ -37,13 +37,8 @@
             <a href="#login-form" class="button" id="js-form-right">LOGIN</a>
         </div>
         <div class="auth-form__modal <?php if(isset($_POST['signup'])) { echo ' auth-form__modal--signup '; } else { echo ' auth-form__modal--login ';}; ?>">
-
-
-
             <?php include('signup.php'); ?>
             <?php include('login.php'); ?>
-
-
         </div>
     </div>
 

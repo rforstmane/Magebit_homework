@@ -33,5 +33,5 @@ $("#js-form-left").on("click", function() {
     $(".error").remove();
     $(".auth-form__modal").addClass("auth-form__modal--signup")
     $(".auth-form__modal").removeClass("auth-form__modal--login")
-    
+
 })
