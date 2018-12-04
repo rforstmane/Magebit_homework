@@ -1,4 +1,4 @@
-<?php include('connect.php'); ?>
+<?php //include('connect.php'); ?>
 <form id="login-form" class="form form--login" method="POST" action="main.php">
 
     <div class="form__title">

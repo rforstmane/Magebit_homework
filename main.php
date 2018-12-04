@@ -36,11 +36,20 @@
             </div>
             <a href="#login-form" class="button" id="js-form-right">LOGIN</a>
         </div>
-        <div class="auth-form__modal <?php if(isset($_POST['signup'])) { echo ' auth-form__modal--signup '; } else { echo ' auth-form__modal--login ';}; ?>">
+        <div class="auth-form__modal <?php if (isset($_POST['signup'])) {
+            echo ' auth-form__modal--signup ';
+        } else {
+            echo ' auth-form__modal--login ';
+        }; ?>">
             <?php include('signup.php'); ?>
             <?php include('login.php'); ?>
         </div>
     </div>
+
+    <footer class="footer">
+        <p>ALL RIGHTS RESERVED "MAGEBIT" <?PHP echo date('Y'); ?>.</p>
+    </footer>
+</div>
 
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
