@@ -35,3 +35,8 @@ $("#js-form-left").on("click", function() {
     $(".auth-form__modal").removeClass("auth-form__modal--login")
 
 })
+
+$("#add_input").on("click", function () {
+    $("#inputwrapper").append('<input type="text" name="input[]">');
+
+})

@@ -9,8 +9,13 @@
 <body>
 <div class="wrapper">
     <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
+    <button id="add_input" class="button">Add input</button>
+    <div id="inputwrapper"></div>
 </div>
 
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
