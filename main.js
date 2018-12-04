@@ -5,8 +5,10 @@ let inputs = document.getElementsByClassName("input-group__input");
         $(inputs[i]).on("blur", blurHandler);
 
         if (inputs[i].value !== "") {
-            $(inputs[i]).parent.addClass("input-group--active");
+            $(inputs[i]).parent().addClass("input-group--active");
+
         }
+
     }
 
 function focusHandler() {
