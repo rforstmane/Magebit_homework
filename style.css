@@ -371,3 +371,11 @@ body {
     color: #ffffff;
     padding: 20px;
 }
+
+.footer {
+    color: #a7b3cb;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 40px;
+    letter-spacing: 2px;
+}
