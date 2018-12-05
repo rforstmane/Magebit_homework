@@ -37,6 +37,7 @@ $("#js-form-left").on("click", function() {
 })
 
 $("#add_input").on("click", function () {
-    $("#inputwrapper").append('<input type="text" name="input[]">');
+
+    $("#inputwrapper").append('<div></div><input type="text" name="input[]"><input type="text" name="input[]"><button class="delete">x</button></div>');
 
 })

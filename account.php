@@ -11,6 +11,7 @@
     <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
     <button id="add_input" class="button">Add input</button>
     <div id="inputwrapper"></div>
+    <button id="submit" class="button">Submit</button>
 </div>
 
 
