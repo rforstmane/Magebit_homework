@@ -1,4 +1,9 @@
 <?php include('connect.php'); ?>
+<?php if(isset($_SESSION['name'])) {
+    header('location: logged_in.php');
+}
+
+?>
 
 <!DOCTYPE html>
 <html>

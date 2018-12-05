@@ -1,4 +1,9 @@
 <?php include('connect.php'); ?>
+<?php if (!isset($_SESSION['name'])) {
+    header('location: main.php');
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
