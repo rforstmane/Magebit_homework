@@ -73,6 +73,11 @@ body {
 .auth-form {
     background-color: rgba(27, 35, 71, 0.9);
     color: #ffffff;
+
+}
+.auth-form--error {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .auth-form__column {
@@ -157,6 +162,10 @@ body {
         max-width: 920px;
         position: relative;
         margin-top: auto;
+    }
+
+    .auth-form--error {
+        flex-direction: unset;
     }
 
     .auth-form__modal {

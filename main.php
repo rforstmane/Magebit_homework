@@ -16,7 +16,9 @@
 
 <body>
 <div class="wrapper">
-    <div class="auth-form">
+    <div class="auth-form <?php if(isset($_POST['signup']) || ($_POST['login'])) {
+        echo ' auth-form--error ';
+    }; ?>">
         <div class="auth-form__column">
             <h2 class="auth-form__title">
                 Don't have an account?
