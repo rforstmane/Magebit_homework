@@ -379,3 +379,8 @@ body {
     padding-bottom: 40px;
     letter-spacing: 2px;
 }
+
+.error {
+    color: red;
+    padding-bottom: 15px;
+}
