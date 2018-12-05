@@ -47,10 +47,7 @@
             <?php include('login.php'); ?>
         </div>
     </div>
-
-    <footer class="footer">
-        <p>ALL RIGHTS RESERVED "MAGEBIT" <?PHP echo date('Y'); ?>.</p>
-    </footer>
+<?php include('footer.php'); ?>
 </div>
 
 
