@@ -13,8 +13,13 @@
 <body>
 <div class="wrapper">
     <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
-    <button id="add_input" class="button">Add input</button>
-    <div id="inputwrapper"></div>
+    <div id="inputwrapper">
+        <div class="row">
+            <input class="js-attribute-input" name="key"/>
+            <input class="js-attribute-input" name="value"/>
+            <button class="delete">x</button>
+        </div>
+    </div>
     <button id="submit" class="button">Submit</button>
 </div>
 
