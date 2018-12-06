@@ -28,7 +28,7 @@
             <main class="main">Welcome, <?php echo $_SESSION['name']; ?>!</main>
 
         <?php endif; ?>
-
+        <?php include('footer.php'); ?>
     </div>
 </body>
 </html>
