@@ -91,8 +91,12 @@ if (isset($_POST['submit'])) {
     }
 
     for ($i = 0; $i < count($keey_array); $i++) {
-        $mysql = "INSERT INTO attributes (users_id, keey, value) VALUES ('$user_id', '$keey_array[$i]', '$value_array[$i]') ";
-        mysqli_query($connect, $mysql);
+        if (!(empty($keey_array[$i]) && empty($value_array[$i]))){
+            $mysql = "INSERT INTO attributes (user_id, keey, value) VALUES ('$user_id', '$keey_array[$i]', '$value_array[$i]') ";
+            mysqli_query($connect, $mysql);
+        }
     }
 }
+
+
 ?>
