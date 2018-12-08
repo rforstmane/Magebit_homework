@@ -11,17 +11,20 @@
 
 </head>
 <body>
-<div class="wrapper">
-    <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
-    <div id="inputwrapper">
-        <div class="row">
-            <input class="js-attribute-input" name="key"/>
-            <input class="js-attribute-input" name="value"/>
-            <button class="delete">x</button>
+<form method="post" action="account.php">
+    <div class="wrapper">
+        <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
+        <?php include('errors.php'); ?>
+        <div id="inputwrapper">
+            <div class="row">
+                <input class="js-attribute-input" type="text" name="keey[]"/>
+                <input class="js-attribute-input" type="text" name="value[]"/>
+                <button class="delete">x</button>
+            </div>
         </div>
+        <button id="submit" class="button" type="submit" name="submit">Save changes</button>
     </div>
-    <button id="submit" class="button">Submit</button>
-</div>
+</form>
 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

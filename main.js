@@ -49,8 +49,8 @@ function initAttributRowDelete() {
 
 function appendRow() {
     $("#inputwrapper").append('<div class="row">\n' +
-        '            <input class="js-attribute-input"/>\n' +
-        '            <input class="js-attribute-input"/>\n' +
+        '            <input class="js-attribute-input" name="keey[]"/>\n' +
+        '            <input class="js-attribute-input" name="value[]"/>\n' +
         '            <button class="delete">x</button>\n' +
         '        </div>');
 

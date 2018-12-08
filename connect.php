@@ -21,7 +21,6 @@ if (isset($_POST['signup'])) {
         array_push($errors, "Password is required");
     }
 
-
     $user_check = "SELECT * FROM users WHERE email='$email' LIMIT 1 ";
     $results = mysqli_query($connect, $user_check);
     $user = mysqli_fetch_assoc($results);
@@ -31,7 +30,6 @@ if (isset($_POST['signup'])) {
             array_push($errors, "Email already exists");
         }
     }
-
 
     if (count($errors) == 0) {
         $password = md5($password);
@@ -49,11 +47,9 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
 
     if (empty($email)) {
         array_push($errors, "Email is required");
-
     }
     if (empty($password)) {
         array_push($errors, "Password is required");
-
     }
 
     if (count($errors) == 0) {
@@ -65,17 +61,14 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
             $row = mysqli_fetch_array($result);
             $id = $row['id'];
             $_SESSION['name'] = $row['name'];
+            $_SESSION['user_id'] = $id;
 //            $_SESSION['success'] = "You are now logged in";
             header('location: logged_in.php');
         } else {
             array_push($errors, "Wrong email or password");
-
         }
     }
-
 }
-
-
 
 if (isset($_GET['logout'])) {
     session_destroy();
@@ -83,4 +76,23 @@ if (isset($_GET['logout'])) {
     header('location: main.php');
 }
 
+if (isset($_POST['submit'])) {
+    var_dump($_POST['keey']);
+
+    $user_id = $_SESSION['user_id'];
+    $keey_array = [];
+    $value_array = [];
+
+    foreach ($_POST['keey'] as $keey) {
+        $keey_array[] = mysqli_real_escape_string($connect, $keey);
+    }
+    foreach ($_POST['value'] as $value) {
+        $value_array[] = mysqli_real_escape_string($connect, $value);
+    }
+
+    for ($i = 0; $i < count($keey_array); $i++) {
+        $mysql = "INSERT INTO attributes (users_id, keey, value) VALUES ('$user_id', '$keey_array[$i]', '$value_array[$i]') ";
+        mysqli_query($connect, $mysql);
+    }
+}
 ?>
