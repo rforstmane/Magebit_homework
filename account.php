@@ -26,6 +26,7 @@ $attr_rows = mysqli_fetch_all($attr_result, MYSQLI_ASSOC);
         <div id="inputwrapper">
             <?php foreach ($attr_rows as $result) { ?>
                 <div class="row">
+                    <input type="hidden" name="id[]" value="<?php echo $result["id"]?>">
                     <input class="js-attribute-input" type="text" name="keey[]" value="<?php echo $result["keey"]; ?>"/>
                     <input class="js-attribute-input" type="text" name="value[]"
                            value="<?php echo $result["value"]; ?>"/>
@@ -33,6 +34,7 @@ $attr_rows = mysqli_fetch_all($attr_result, MYSQLI_ASSOC);
                 </div>
             <?php } ?>
             <div class="row">
+                <input type="hidden" name="id[]">
                 <input class="js-attribute-input" type="text" name="keey[]"/>
                 <input class="js-attribute-input" type="text" name="value[]"/>
                 <button class="delete">x</button>

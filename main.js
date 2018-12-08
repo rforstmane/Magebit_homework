@@ -36,19 +36,20 @@ $("#js-form-left").on("click", function () {
 
 function deleteRowKeepLast(event) {
     var row = event.target.parentElement;
-    if($(row).siblings().length > 0) {
+    if ($(row).siblings().length > 0) {
         row.remove();
     }
 }
 
 function initAttributRowDelete() {
-    $(".delete").on("click", function(event)  {
+    $(".delete").on("click", function (event) {
         deleteRowKeepLast(event);
     });
 }
 
 function appendRow() {
     $("#inputwrapper").append('<div class="row">\n' +
+        '<input type="hidden" name="id[]">\n' +
         '            <input class="js-attribute-input" name="keey[]"/>\n' +
         '            <input class="js-attribute-input" name="value[]"/>\n' +
         '            <button class="delete">x</button>\n' +
@@ -60,7 +61,7 @@ function appendRow() {
 
 function initAttributeInputs() {
     $(".js-attribute-input").on("keyup", function () {
-        if(this.parentElement.nextElementSibling === null) {
+        if (this.parentElement.nextElementSibling === null) {
             appendRow()
         }
     });

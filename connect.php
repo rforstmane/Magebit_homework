@@ -5,6 +5,12 @@ $email = "";
 $errors = array();
 
 $connect = mysqli_connect('localhost', 'webuser', 'secretpassword', 'magebit');
+function dump_and_die($arg)
+{
+    echo "<pre>";
+    var_dump($arg);
+    die();
+}
 
 if (isset($_POST['signup'])) {
     $name = mysqli_real_escape_string($connect, $_POST['name']);
@@ -77,26 +83,34 @@ if (isset($_GET['logout'])) {
 }
 
 if (isset($_POST['submit'])) {
-    var_dump($_POST['keey']);
-
+    $id_array = $_POST['id'];
+    $keey_array = $_POST['keey'];
+    $value_array = $_POST['value'];
+    // all inputs submitted form
+    $all_inputs_array = [];
     $user_id = $_SESSION['user_id'];
-    $keey_array = [];
-    $value_array = [];
+    // inputs which have been newly added
+    $new_inputs = [];
 
-    foreach ($_POST['keey'] as $keey) {
-        $keey_array[] = mysqli_real_escape_string($connect, $keey);
-    }
-    foreach ($_POST['value'] as $value) {
-        $value_array[] = mysqli_real_escape_string($connect, $value);
+    foreach ($id_array as $i => $item_id) {
+        $object = new stdClass();
+        $object->id = mysqli_real_escape_string($connect, $id_array[$i]);
+        $object->key = mysqli_real_escape_string($connect, $keey_array[$i]);
+        $object->value = mysqli_real_escape_string($connect, $value_array[$i]);
+        array_push($all_inputs_array, $object);
     }
 
-    for ($i = 0; $i < count($keey_array); $i++) {
-        if (!(empty($keey_array[$i]) && empty($value_array[$i]))){
-            $mysql = "INSERT INTO attributes (user_id, keey, value) VALUES ('$user_id', '$keey_array[$i]', '$value_array[$i]') ";
+    foreach ($all_inputs_array as $item) {
+        if ($item->id == "") {
+            array_push($new_inputs, $item);
+        }
+    }
+
+    foreach ($new_inputs as $input) {
+        if (!(empty($input->key) && empty($input->value))) {
+            $mysql = "INSERT INTO attributes (user_id, keey, value) VALUES ('$user_id', '$input->key', '$input->value') ";
             mysqli_query($connect, $mysql);
         }
     }
 }
-
-
 ?>
