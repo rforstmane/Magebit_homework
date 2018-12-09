@@ -82,25 +82,21 @@ if (isset($_GET['logout'])) {
     header('location: main.php');
 }
 
-if (isset($_POST['submit'])) {
-    $id_array = $_POST['id'];
-    $keey_array = $_POST['keey'];
-    $value_array = $_POST['value'];
-    // all inputs submitted form
+function merge_form_input($id_array, $keey_array, $value_array, $db_connect) {
     $all_inputs_array = [];
-    $user_id = $_SESSION['user_id'];
-    // inputs which have been newly added
-    $new_inputs = [];
-
     foreach ($id_array as $i => $item_id) {
         $object = new stdClass();
-        $object->id = mysqli_real_escape_string($connect, $id_array[$i]);
-        $object->key = mysqli_real_escape_string($connect, $keey_array[$i]);
-        $object->value = mysqli_real_escape_string($connect, $value_array[$i]);
+        $object->id = mysqli_real_escape_string($db_connect, $id_array[$i]);
+        $object->key = mysqli_real_escape_string($db_connect, $keey_array[$i]);
+        $object->value = mysqli_real_escape_string($db_connect, $value_array[$i]);
         array_push($all_inputs_array, $object);
     }
+    return $all_inputs_array;
+}
 
-    foreach ($all_inputs_array as $item) {
+function store_new_inputs($inputs_array, $user_id, $db_connect) {
+    $new_inputs = [];
+    foreach ($inputs_array as $item) {
         if ($item->id == "") {
             array_push($new_inputs, $item);
         }
@@ -109,8 +105,19 @@ if (isset($_POST['submit'])) {
     foreach ($new_inputs as $input) {
         if (!(empty($input->key) && empty($input->value))) {
             $mysql = "INSERT INTO attributes (user_id, keey, value) VALUES ('$user_id', '$input->key', '$input->value') ";
-            mysqli_query($connect, $mysql);
+            mysqli_query($db_connect, $mysql);
         }
     }
+}
+
+if (isset($_POST['submit'])) {
+
+    // lokals mainigais, lai vieglak stradat
+    $user_id = $_SESSION['user_id'];
+    // all inputs submitted form
+    $all_inputs_array = merge_form_input($_POST['id'], $_POST['keey'], $_POST['value'], $connect);
+    // inputs which have been newly added
+
+    store_new_inputs($all_inputs_array, $user_id, $connect);
 }
 ?>

@@ -12,10 +12,14 @@
 </head>
 <body>
 <?php
-$user_id = $_SESSION['user_id'];
 
+// user_id uzstadas, kad ielogojos
+$user_id = $_SESSION['user_id'];
+// query string
 $attr_query = "SELECT * FROM attributes WHERE user_id ='$user_id' ";
+// uzbūve query, ko saprot db
 $attr_result = mysqli_query($connect, $attr_query);
+// tiek atgriezts rezultats ka asociativs masivs (ASSOC)
 $attr_rows = mysqli_fetch_all($attr_result, MYSQLI_ASSOC);
 ?>
 
