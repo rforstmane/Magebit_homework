@@ -138,15 +138,31 @@ function get_old_inputs($potential_updated_inputs, $user_id, $db_connect)
 {
     $old_inputs_query = "SELECT * FROM attributes WHERE user_id='$user_id' AND id IN (" . join_ids($potential_updated_inputs) . ") ";
     $old_inputs_result = mysqli_query($db_connect, $old_inputs_query);
+    if ($old_inputs_result != false) {
+        $old_inputs_rows = mysqli_fetch_all($old_inputs_result, MYSQLI_ASSOC);
+        foreach ($old_inputs_rows as $i => $row) {
+            $old_inputs_rows[$i] = (object)$row;
+        }
+        return $old_inputs_rows;
+    } else {
+        return [];
+    }
+}
+
+function get_all_attributes($user_id, $db_connect)
+{
+    $old_inputs_query = "SELECT * FROM attributes WHERE user_id ='$user_id' ";
+    $old_inputs_result = mysqli_query($db_connect, $old_inputs_query);
     $old_inputs_rows = mysqli_fetch_all($old_inputs_result, MYSQLI_ASSOC);
 
-    foreach ($old_inputs_rows as $i=>$row) {
+    foreach ($old_inputs_rows as $i => $row) {
         $old_inputs_rows[$i] = (object)$row;
     }
     return $old_inputs_rows;
 }
 
-function find_input_by_id($id, $searchable_array) {
+function find_input_by_id($id, $searchable_array)
+{
     foreach ($searchable_array as $item) {
         if ($item->id == $id) {
             return $item;
@@ -165,9 +181,23 @@ function update_existing_inputs($inputs_array, $user_id, $db_connect)
 
         if ($old_version != NULL) {
             if ($old_version->keey != $potential_version->key || $old_version->value != $potential_version->value) {
-                $update_inputs_query = "UPDATE attributes SET keey ='$potential_version->key', value = '$potential_version->value' WHERE id='$potential_version->id'" ;
+                $update_inputs_query = "UPDATE attributes SET keey ='$potential_version->key', value = '$potential_version->value' WHERE id='$potential_version->id'";
                 mysqli_query($db_connect, $update_inputs_query);
             }
+        }
+    }
+}
+
+function delete_removed_inputs($inputs_array, $user_id, $db_connect)
+{
+    $potential_updated_inputs = get_potential_updated($inputs_array);
+    $old_inputs = get_all_attributes($user_id, $db_connect);
+
+    foreach ($old_inputs as $old_version) {
+        $potential_version = find_input_by_id($old_version->id, $potential_updated_inputs);
+        if ($potential_version == NULL) {
+            $deleted_inputs_query = "DELETE FROM attributes WHERE id='$old_version->id' AND user_id = '$user_id'  ";
+            mysqli_query($db_connect, $deleted_inputs_query);
         }
     }
 }
@@ -178,6 +208,7 @@ if (isset($_POST['submit'])) {
     // all inputs submitted form
     $all_inputs_array = merge_form_input($_POST['id'], $_POST['keey'], $_POST['value'], $connect);
     // inputs which have been newly added
+    delete_removed_inputs($all_inputs_array, $user_id, $connect);
     store_new_inputs($all_inputs_array, $user_id, $connect);
     update_existing_inputs($all_inputs_array, $user_id, $connect);
 }
