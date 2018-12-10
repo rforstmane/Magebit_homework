@@ -146,6 +146,7 @@ body {
     width: 50%;
     display: inline-block;
     text-align: center;
+
 }
 
 .button:hover, .button:hover {
@@ -370,6 +371,21 @@ body {
     background-color: rgba(0,0,0,0.4);
     color: #ffffff;
     padding: 20px;
+    text-align: center;
+}
+
+.input-wrapper {
+    padding-bottom: 20px;
+}
+
+.main .button {
+    background-color: rgba(0,0,0,0.1);
+    width: auto;
+}
+
+.main .button:hover {
+    background-color: #49abfe;
+
 }
 
 .footer {
@@ -383,4 +399,8 @@ body {
 .error {
     color: red;
     padding-bottom: 15px;
+}
+
+button {
+    cursor: pointer;
 }

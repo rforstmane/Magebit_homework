@@ -25,26 +25,31 @@ $attr_rows = mysqli_fetch_all($attr_result, MYSQLI_ASSOC);
 
 <form method="post" action="account.php">
     <div class="wrapper">
-        <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
-        <?php include('errors.php'); ?>
-        <div id="inputwrapper">
-            <?php foreach ($attr_rows as $result) { ?>
+        <nav class="nav">
+            <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
+        </nav>
+        <main class="main">
+            <?php include('errors.php'); ?>
+            <div id="inputwrapper" class="input-wrapper">
+                <?php foreach ($attr_rows as $result) { ?>
+                    <div class="row">
+                        <input type="hidden" name="id[]" value="<?php echo $result["id"]?>">
+                        <input class="js-attribute-input" type="text" name="keey[]" value="<?php echo $result["keey"]; ?>"/>
+                        <input class="js-attribute-input" type="text" name="value[]"
+                               value="<?php echo $result["value"]; ?>"/>
+                        <button class="delete">x</button>
+                    </div>
+                <?php } ?>
                 <div class="row">
-                    <input type="hidden" name="id[]" value="<?php echo $result["id"]?>">
-                    <input class="js-attribute-input" type="text" name="keey[]" value="<?php echo $result["keey"]; ?>"/>
-                    <input class="js-attribute-input" type="text" name="value[]"
-                           value="<?php echo $result["value"]; ?>"/>
+                    <input type="hidden" name="id[]">
+                    <input class="js-attribute-input" type="text" name="keey[]"/>
+                    <input class="js-attribute-input" type="text" name="value[]"/>
                     <button class="delete">x</button>
                 </div>
-            <?php } ?>
-            <div class="row">
-                <input type="hidden" name="id[]">
-                <input class="js-attribute-input" type="text" name="keey[]"/>
-                <input class="js-attribute-input" type="text" name="value[]"/>
-                <button class="delete">x</button>
             </div>
-        </div>
-        <button id="submit" class="button" type="submit" name="submit">Save changes</button>
+            <button id="submit" class="button" type="submit" name="submit">Save changes</button>
+        </main>
+        <?php include('footer.php'); ?>
     </div>
 </form>
 

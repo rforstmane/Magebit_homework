@@ -211,5 +211,6 @@ if (isset($_POST['submit'])) {
     delete_removed_inputs($all_inputs_array, $user_id, $connect);
     store_new_inputs($all_inputs_array, $user_id, $connect);
     update_existing_inputs($all_inputs_array, $user_id, $connect);
+    array_push($errors, "Changes saved successfully");
 }
 ?>
