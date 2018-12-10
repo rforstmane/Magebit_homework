@@ -1,6 +1,6 @@
 <?php include('connect.php'); ?>
 <?php if (!isset($_SESSION['name'])) {
-    header('location: main.php');
+    header('location: main');
 }
 
 ?>
@@ -22,7 +22,7 @@
 
         <?php if (isset($_SESSION['name'])): ?>
             <nav class="nav">
-                <a href="account.php" class="nav__link">MY ACCOUNT</a>
+                <a href="account" class="nav__link">MY ACCOUNT</a>
                 <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
             </nav>
             <main class="main">Welcome, <?php echo $_SESSION['name']; ?>!</main>

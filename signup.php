@@ -1,4 +1,4 @@
-<form id="signup-form" class="form form--signup" method="POST" action="main.php">
+<form id="signup-form" class="form form--signup" method="POST" action="main">
 
     <div class="form__title">
         <h2>Sign Up</h2>

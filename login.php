@@ -1,4 +1,4 @@
-<form id="login-form" class="form form--login" method="POST" action="main.php">
+<form id="login-form" class="form form--login" method="POST" action="main">
 
     <div class="form__title">
         <h2>Login</h2>
@@ -33,6 +33,6 @@
     </div>
     <div class="login-group">
         <button class="login-group__button" type="submit" name="login" value="bar">LOGIN</button>
-        <a href="#" class="login-group__forgot">Forgot?</a>
+        <a href="" class="login-group__forgot">Forgot?</a>
     </div>
 </form>

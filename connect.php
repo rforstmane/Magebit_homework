@@ -43,7 +43,7 @@ if (isset($_POST['signup'])) {
         mysqli_query($connect, $sql);
         $_SESSION['name'] = $name;
         $_SESSION['success'] = "You are now logged in";
-        header('location: logged_in.php');
+        header('location: logged_in');
     }
 }
 
@@ -69,7 +69,7 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
             $_SESSION['name'] = $row['name'];
             $_SESSION['user_id'] = $id;
 //            $_SESSION['success'] = "You are now logged in";
-            header('location: logged_in.php');
+            header('location: logged_in');
         } else {
             array_push($errors, "Wrong email or password");
         }
@@ -79,7 +79,7 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['name']);
-    header('location: main.php');
+    header('location: main');
 }
 
 function merge_form_input($id_array, $keey_array, $value_array, $db_connect)

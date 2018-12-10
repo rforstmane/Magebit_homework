@@ -1,6 +1,6 @@
 <?php include('connect.php'); ?>
 <?php if (!isset($_SESSION['name'])) {
-    header('location: main.php');
+    header('location: main');
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ $attr_result = mysqli_query($connect, $attr_query);
 $attr_rows = mysqli_fetch_all($attr_result, MYSQLI_ASSOC);
 ?>
 
-<form method="post" action="account.php">
+<form method="post" action="account">
     <div class="wrapper">
         <nav class="nav">
             <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
