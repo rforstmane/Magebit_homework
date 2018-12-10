@@ -2,8 +2,8 @@
 <?php if (!isset($_SESSION['name'])) {
     header('location: main');
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,6 @@
                 <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
             </nav>
             <main class="main">Welcome, <?php echo $_SESSION['name']; ?>!</main>
-
         <?php endif; ?>
         <?php include('footer.php'); ?>
     </div>

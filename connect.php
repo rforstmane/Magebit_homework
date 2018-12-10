@@ -5,6 +5,7 @@ $email = "";
 $errors = array();
 
 $connect = mysqli_connect('localhost', 'webuser', 'secretpassword', 'magebit');
+
 function dump_and_die($arg)
 {
     echo "<pre>";
@@ -40,10 +41,12 @@ if (isset($_POST['signup'])) {
     if (count($errors) == 0) {
         $password = md5($password);
         $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password') ";
-        mysqli_query($connect, $sql);
-        $_SESSION['name'] = $name;
-        $_SESSION['success'] = "You are now logged in";
-        header('location: logged_in');
+        if (mysqli_query($connect, $sql)) {
+            $_SESSION['name'] = $name;
+            $_SESSION['user_id'] = mysqli_insert_id($connect);
+            $_SESSION['success'] = "You are now logged in";
+            header('location: logged_in');
+        }
     }
 }
 
@@ -68,7 +71,6 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
             $id = $row['id'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['user_id'] = $id;
-//            $_SESSION['success'] = "You are now logged in";
             header('location: logged_in');
         } else {
             array_push($errors, "Wrong email or password");
