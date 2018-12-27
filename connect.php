@@ -4,7 +4,11 @@ $name = "";
 $email = "";
 $errors = array();
 
-$connect = mysqli_connect('localhost', 'webuser', 'secretpassword', 'magebit');
+class Database {
+    private $host = 'localhost';
+    private $user = 'webuser';
+    private $password = 'secretpassword';
+    private $db_name = 'magebit';
 
 function dump_and_die($arg)
 {
@@ -47,12 +51,17 @@ if (isset($_POST['signup'])) {
             $_SESSION['success'] = "You are now logged in";
             header('location: logged_in');
         }
+    public function connect() {
+        $connect = new mysqli($this->host, $this->user, $this->password, $this->db_name);
+        return $connect;
     }
 }
 
 if (isset($_POST['login']) && !empty($_POST['login'])) {
     $email = mysqli_real_escape_string($connect, $_POST['email']);
     $password = mysqli_real_escape_string($connect, $_POST['password']);
+$database = new Database;
+$database->connect();
 
     if (empty($email)) {
         array_push($errors, "Email is required");
