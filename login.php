@@ -6,7 +6,7 @@
     </div>
     <?php include('errors.php'); ?>
     <div class="input-group">
-        <input autocomplete="off" class="input-group__input" type="email" name="email" value="<?php echo $email; ?>">
+        <input autocomplete="off" class="input-group__input" type="email" name="email" value="<?php echo $user->email; ?>">
 
 
         <label class="input-group__label">

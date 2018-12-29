@@ -64,19 +64,19 @@ class Users
 
     public function login($post)
     {
-        $email = $this->dbConnection->escape_string($post['email']);
-        $password = $this->dbConnection->escape_string($post['password']);
+        $this->email = $this->dbConnection->escape_string($post['email']);
+        $this->password = $this->dbConnection->escape_string($post['password']);
 
-        if (empty($email)) {
-            array_push($errors, "Email is required");
+        if (empty($this->email)) {
+            $this->app->pushError("Email is required");
         }
-        if (empty($password)) {
-            array_push($errors, "Password is required");
+        if (empty($this->password)) {
+            $this->app->pushError("Password is required");
         }
 
-        if (count($errors) == 0) {
-            $password = md5($password);
-            $query = "SELECT id, name FROM users WHERE email='$email' AND password='$password' LIMIT 1 ";
+        if (count($this->app->errors) == 0) {
+            $this->password = md5($this->password);
+            $query = "SELECT id, name FROM users WHERE email='$this->email' AND password='$this->password' LIMIT 1 ";
             $result = $this->dbConnection->query($query);
 
             if ($result->num_rows == 1) {
@@ -86,7 +86,7 @@ class Users
                 $_SESSION['user_id'] = $id;
                 header('location: logged_in');
             } else {
-                array_push($errors, "Wrong email or password");
+                $this->app->pushError("Wrong email or password");
             }
         }
     }
