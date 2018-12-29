@@ -54,10 +54,9 @@ if (isset($_POST['signup'])) {
     signup($connect, $_POST);
 }
 
-
-if (isset($_POST['login']) && !empty($_POST['login'])) {
-    $email = mysqli_real_escape_string($connect, $_POST['email']);
-    $password = mysqli_real_escape_string($connect, $_POST['password']);
+function login($connect, $post) {
+    $email = mysqli_real_escape_string($connect, $post['email']);
+    $password = mysqli_real_escape_string($connect, $post['password']);
 
     if (empty($email)) {
         array_push($errors, "Email is required");
@@ -82,6 +81,12 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
         }
     }
 }
+
+if (isset($_POST['login']) && !empty($_POST['login'])) {
+   login($connect, $_POST);
+}
+
+
 
 if (isset($_GET['logout'])) {
     session_destroy();
