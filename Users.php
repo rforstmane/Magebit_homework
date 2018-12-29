@@ -5,8 +5,9 @@ require_once ('Config.php');
 class Users {
     private $dbConnection;
 
-    function __construct()
+    function __construct($instance)
     {
+        $this->app = &$instance;
         $this->dbConnection  = new mysqli(Config::HOST, Config::USER, Config::PASSWORD, Config::DATABASE);
     }
 
@@ -21,13 +22,13 @@ class Users {
         $password = $this->dbConnection->escape_string($post['password']);
 
         if (empty($name)) {
-            array_push($errors, "Name is required");
+            $this->app->pushError("Name is required");
         }
         if (empty($email)) {
-            array_push($errors, "Email is required");
+            $this->app->pushError("Email is required");
         }
         if (empty($password)) {
-            array_push($errors, "Password is required");
+            $this->app->pushError("Password is required");
         }
 
         $user_check = "SELECT * FROM users WHERE email='$email' LIMIT 1 ";
@@ -36,11 +37,11 @@ class Users {
 
         if ($user) {
             if ($user['email'] === $email) {
-                array_push($errors, "Email already exists");
+                $this->app->pushError("Email already exists");
             }
         }
 
-        if (count($errors) == 0) {
+        if (count($this->app->errors) == 0) {
             $password = md5($password);
             $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password') ";
             if ($this->dbConnection->query($sql)) {

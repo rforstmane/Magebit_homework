@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
 <div class="wrapper">
     <div class="auth-form <?php if(isset($_POST['signup']) || ($_POST['login'])) {
         echo ' auth-form--error ';

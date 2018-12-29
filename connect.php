@@ -1,6 +1,10 @@
 <?php
 
 require_once ('Users.php');
+require_once ('App.php');
+
+$instance = new App;
+$user = new Users($instance);
 
 session_start();
 $name = "";
@@ -17,17 +21,14 @@ function dump_and_die($arg)
 }
 
 if (isset($_POST['signup'])) {
-    $user = new Users;
     $user->signup($_POST);
 }
 
 if (isset($_POST['login']) && !empty($_POST['login'])) {
-    $user = new Users;
     $user->login($_POST);
 }
 
 if (isset($_GET['logout'])) {
-    $user = new Users;
     $user->logout();
 }
 
