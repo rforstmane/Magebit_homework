@@ -7,8 +7,6 @@ $instance = new App;
 $user = new Users($instance);
 
 session_start();
-$name = "";
-$email = "";
 $errors = array();
 
 $connect = mysqli_connect('localhost', 'webuser', 'secretpassword', 'magebit');

@@ -1,14 +1,22 @@
 <?php
 
-require_once ('Config.php');
+require_once('Config.php');
 
-class Users {
+class Users
+{
     private $dbConnection;
+    private $app;
+    public $name;
+    public $email;
+    public $password;
+
 
     function __construct($instance)
     {
+        $this->name = "";
+        $this->email = "";
         $this->app = &$instance;
-        $this->dbConnection  = new mysqli(Config::HOST, Config::USER, Config::PASSWORD, Config::DATABASE);
+        $this->dbConnection = new mysqli(Config::HOST, Config::USER, Config::PASSWORD, Config::DATABASE);
     }
 
     function __destruct()
@@ -16,36 +24,37 @@ class Users {
         $this->dbConnection->close();
     }
 
-    public function signup($post) {
-        $name = $this->dbConnection->escape_string($post['name']);
-        $email = $this->dbConnection->escape_string($post['email']);
-        $password = $this->dbConnection->escape_string($post['password']);
+    public function signup($post)
+    {
+        $this->name = $this->dbConnection->escape_string($post['name']);
+        $this->email = $this->dbConnection->escape_string($post['email']);
+        $this->password = $this->dbConnection->escape_string($post['password']);
 
-        if (empty($name)) {
+        if (empty($this->name)) {
             $this->app->pushError("Name is required");
         }
-        if (empty($email)) {
+        if (empty($this->email)) {
             $this->app->pushError("Email is required");
         }
-        if (empty($password)) {
+        if (empty($this->password)) {
             $this->app->pushError("Password is required");
         }
 
-        $user_check = "SELECT * FROM users WHERE email='$email' LIMIT 1 ";
+        $user_check = "SELECT * FROM users WHERE email='$this->email' LIMIT 1 ";
         $results = $this->dbConnection->query($user_check);
         $user = $results->fetch_assoc();
 
         if ($user) {
-            if ($user['email'] === $email) {
+            if ($user['email'] === $this->email) {
                 $this->app->pushError("Email already exists");
             }
         }
 
         if (count($this->app->errors) == 0) {
-            $password = md5($password);
-            $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password') ";
+            $this->password = md5($this->password);
+            $sql = "INSERT INTO users (name, email, password) VALUES ('$this->name', '$this->email', '$this->password') ";
             if ($this->dbConnection->query($sql)) {
-                $_SESSION['name'] = $name;
+                $_SESSION['name'] = $this->name;
                 $_SESSION['user_id'] = $this->dbConnection->insert_id;
                 $_SESSION['success'] = "You are now logged in";
                 header('location: logged_in');
@@ -53,8 +62,9 @@ class Users {
         }
     }
 
-    public function login($post) {
-        $email = $this->dbConnection->escape_string( $post['email']);
+    public function login($post)
+    {
+        $email = $this->dbConnection->escape_string($post['email']);
         $password = $this->dbConnection->escape_string($post['password']);
 
         if (empty($email)) {
@@ -81,7 +91,8 @@ class Users {
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_destroy();
         unset($_SESSION['name']);
         header('location: main');
