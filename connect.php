@@ -86,12 +86,15 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
    login($connect, $_POST);
 }
 
-
-
-if (isset($_GET['logout'])) {
+function logout() {
     session_destroy();
     unset($_SESSION['name']);
     header('location: main');
+}
+
+
+if (isset($_GET['logout'])) {
+    logout();
 }
 
 function merge_form_input($id_array, $keey_array, $value_array, $db_connect)
