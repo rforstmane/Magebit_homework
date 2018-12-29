@@ -21,36 +21,9 @@ if (isset($_POST['signup'])) {
     $user->signup($connect, $_POST);
 }
 
-function login($connect, $post) {
-    $email = mysqli_real_escape_string($connect, $post['email']);
-    $password = mysqli_real_escape_string($connect, $post['password']);
-
-    if (empty($email)) {
-        array_push($errors, "Email is required");
-    }
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }
-
-    if (count($errors) == 0) {
-        $password = md5($password);
-        $query = "SELECT id, name FROM users WHERE email='$email' AND password='$password' LIMIT 1 ";
-        $result = mysqli_query($connect, $query);
-
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_array($result);
-            $id = $row['id'];
-            $_SESSION['name'] = $row['name'];
-            $_SESSION['user_id'] = $id;
-            header('location: logged_in');
-        } else {
-            array_push($errors, "Wrong email or password");
-        }
-    }
-}
-
 if (isset($_POST['login']) && !empty($_POST['login'])) {
-   login($connect, $_POST);
+    $user = new Users;
+    $user->login($connect, $_POST);
 }
 
 function logout() {

@@ -1,7 +1,7 @@
 <?php
 
 class Users {
-    function signup($connect, $post) {
+    public function signup($connect, $post) {
         $name = mysqli_real_escape_string($connect, $post['name']);
         $email = mysqli_real_escape_string($connect, $post['email']);
         $password = mysqli_real_escape_string($connect, $post['password']);
@@ -34,6 +34,34 @@ class Users {
                 $_SESSION['user_id'] = mysqli_insert_id($connect);
                 $_SESSION['success'] = "You are now logged in";
                 header('location: logged_in');
+            }
+        }
+    }
+
+    public function login($connect, $post) {
+        $email = mysqli_real_escape_string($connect, $post['email']);
+        $password = mysqli_real_escape_string($connect, $post['password']);
+
+        if (empty($email)) {
+            array_push($errors, "Email is required");
+        }
+        if (empty($password)) {
+            array_push($errors, "Password is required");
+        }
+
+        if (count($errors) == 0) {
+            $password = md5($password);
+            $query = "SELECT id, name FROM users WHERE email='$email' AND password='$password' LIMIT 1 ";
+            $result = mysqli_query($connect, $query);
+
+            if (mysqli_num_rows($result) == 1) {
+                $row = mysqli_fetch_array($result);
+                $id = $row['id'];
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['user_id'] = $id;
+                header('location: logged_in');
+            } else {
+                array_push($errors, "Wrong email or password");
             }
         }
     }
