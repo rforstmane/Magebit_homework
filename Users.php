@@ -1,10 +1,24 @@
 <?php
 
+require_once ('Config.php');
+
 class Users {
-    public function signup($connect, $post) {
-        $name = mysqli_real_escape_string($connect, $post['name']);
-        $email = mysqli_real_escape_string($connect, $post['email']);
-        $password = mysqli_real_escape_string($connect, $post['password']);
+    private $dbConnection;
+
+    function __construct()
+    {
+        $this->dbConnection  = new mysqli(Config::HOST, Config::USER, Config::PASSWORD, Config::DATABASE);
+    }
+
+    function __destruct()
+    {
+        $this->dbConnection->close();
+    }
+
+    public function signup($post) {
+        $name = $this->dbConnection->escape_string($post['name']);
+        $email = $this->dbConnection->escape_string($post['email']);
+        $password = $this->dbConnection->escape_string($post['password']);
 
         if (empty($name)) {
             array_push($errors, "Name is required");
@@ -17,8 +31,8 @@ class Users {
         }
 
         $user_check = "SELECT * FROM users WHERE email='$email' LIMIT 1 ";
-        $results = mysqli_query($connect, $user_check);
-        $user = mysqli_fetch_assoc($results);
+        $results = $this->dbConnection->query($user_check);
+        $user = $results->fetch_assoc();
 
         if ($user) {
             if ($user['email'] === $email) {
@@ -29,9 +43,9 @@ class Users {
         if (count($errors) == 0) {
             $password = md5($password);
             $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password') ";
-            if (mysqli_query($connect, $sql)) {
+            if ($this->dbConnection->query($sql)) {
                 $_SESSION['name'] = $name;
-                $_SESSION['user_id'] = mysqli_insert_id($connect);
+                $_SESSION['user_id'] = $this->dbConnection->insert_id;
                 $_SESSION['success'] = "You are now logged in";
                 header('location: logged_in');
             }

@@ -18,7 +18,7 @@ function dump_and_die($arg)
 
 if (isset($_POST['signup'])) {
     $user = new Users;
-    $user->signup($connect, $_POST);
+    $user->signup($_POST);
 }
 
 if (isset($_POST['login']) && !empty($_POST['login'])) {
