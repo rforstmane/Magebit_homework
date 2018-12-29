@@ -65,6 +65,12 @@ class Users {
             }
         }
     }
+
+    public function logout() {
+        session_destroy();
+        unset($_SESSION['name']);
+        header('location: main');
+    }
 }
 
 ?>

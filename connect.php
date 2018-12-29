@@ -26,14 +26,9 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
     $user->login($connect, $_POST);
 }
 
-function logout() {
-    session_destroy();
-    unset($_SESSION['name']);
-    header('location: main');
-}
-
 if (isset($_GET['logout'])) {
-    logout();
+    $user = new Users;
+    $user->logout();
 }
 
 function merge_form_input($id_array, $keey_array, $value_array, $db_connect)
