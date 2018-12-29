@@ -23,7 +23,7 @@ if (isset($_POST['signup'])) {
 
 if (isset($_POST['login']) && !empty($_POST['login'])) {
     $user = new Users;
-    $user->login($connect, $_POST);
+    $user->login($_POST);
 }
 
 if (isset($_GET['logout'])) {

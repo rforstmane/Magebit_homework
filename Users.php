@@ -52,9 +52,9 @@ class Users {
         }
     }
 
-    public function login($connect, $post) {
-        $email = mysqli_real_escape_string($connect, $post['email']);
-        $password = mysqli_real_escape_string($connect, $post['password']);
+    public function login($post) {
+        $email = $this->dbConnection->escape_string( $post['email']);
+        $password = $this->dbConnection->escape_string($post['password']);
 
         if (empty($email)) {
             array_push($errors, "Email is required");
@@ -66,10 +66,10 @@ class Users {
         if (count($errors) == 0) {
             $password = md5($password);
             $query = "SELECT id, name FROM users WHERE email='$email' AND password='$password' LIMIT 1 ";
-            $result = mysqli_query($connect, $query);
+            $result = $this->dbConnection->query($query);
 
-            if (mysqli_num_rows($result) == 1) {
-                $row = mysqli_fetch_array($result);
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_assoc();
                 $id = $row['id'];
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['user_id'] = $id;
