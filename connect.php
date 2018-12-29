@@ -13,10 +13,10 @@ function dump_and_die($arg)
     die();
 }
 
-if (isset($_POST['signup'])) {
-    $name = mysqli_real_escape_string($connect, $_POST['name']);
-    $email = mysqli_real_escape_string($connect, $_POST['email']);
-    $password = mysqli_real_escape_string($connect, $_POST['password']);
+function signup($connect, $post) {
+    $name = mysqli_real_escape_string($connect, $post['name']);
+    $email = mysqli_real_escape_string($connect, $post['email']);
+    $password = mysqli_real_escape_string($connect, $post['password']);
 
     if (empty($name)) {
         array_push($errors, "Name is required");
@@ -49,6 +49,11 @@ if (isset($_POST['signup'])) {
         }
     }
 }
+
+if (isset($_POST['signup'])) {
+    signup($connect, $_POST);
+}
+
 
 if (isset($_POST['login']) && !empty($_POST['login'])) {
     $email = mysqli_real_escape_string($connect, $_POST['email']);
