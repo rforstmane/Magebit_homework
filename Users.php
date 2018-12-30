@@ -11,7 +11,7 @@ class Users
     public $password;
 
 
-    function __construct($instance)
+    public function __construct($instance)
     {
         $this->name = "";
         $this->email = "";
@@ -19,7 +19,7 @@ class Users
         $this->dbConnection = new mysqli(Config::HOST, Config::USER, Config::PASSWORD, Config::DATABASE);
     }
 
-    function __destruct()
+    public function __destruct()
     {
         $this->dbConnection->close();
     }

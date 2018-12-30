@@ -10,18 +10,18 @@ class Attributes {
     public $keey;
     public $value;
 
-    function __construct($instance)
+    public function __construct($instance)
     {
         $this->app = &$instance;
         $this->dbConnection = new mysqli(Config::HOST, Config::USER, Config::PASSWORD, Config::DATABASE);
     }
 
-    function __destruct()
+    public function __destruct()
     {
         $this->dbConnection->close();
     }
 
-    function merge_form_input($id_array, $keey_array, $value_array)
+    public function merge_form_input($id_array, $keey_array, $value_array)
     {
         $all_inputs_array = [];
         foreach ($id_array as $i => $item_id) {
@@ -34,7 +34,7 @@ class Attributes {
         return $all_inputs_array;
     }
 
-    function store_new_inputs($inputs_array)
+    public function store_new_inputs($inputs_array)
     {
         $new_inputs = [];
         foreach ($inputs_array as $item) {
@@ -51,7 +51,7 @@ class Attributes {
         }
     }
 
-    function get_potential_updated($inputs_array)
+    public function get_potential_updated($inputs_array)
     {
         $potential_updated_inputs = [];
         foreach ($inputs_array as $item) {
@@ -62,7 +62,7 @@ class Attributes {
         return $potential_updated_inputs;
     }
 
-    function join_ids($potential_updated_inputs)
+    public function join_ids($potential_updated_inputs)
     {
         $id_array = [];
         foreach ($potential_updated_inputs as $item) {
@@ -73,7 +73,7 @@ class Attributes {
         return $result;
     }
 
-    function get_old_inputs($potential_updated_inputs)
+    public function get_old_inputs($potential_updated_inputs)
     {
         $old_inputs_query = "SELECT * FROM attributes WHERE user_id='$this->user_id' AND id IN (" . $this->join_ids($potential_updated_inputs) . ") ";
         $old_inputs_result = $this->dbConnection->query($old_inputs_query);
@@ -88,7 +88,7 @@ class Attributes {
         }
     }
 
-    function get_all_attributes()
+    public function get_all_attributes()
     {
         $old_inputs_query = "SELECT * FROM attributes WHERE user_id ='$this->user_id' ";
         $old_inputs_result = $this->dbConnection->query($old_inputs_query);
@@ -100,7 +100,7 @@ class Attributes {
         return $old_inputs_rows;
     }
 
-    function find_input_by_id($id, $searchable_array)
+    public function find_input_by_id($id, $searchable_array)
     {
         foreach ($searchable_array as $item) {
             if ($item->id == $id) {
