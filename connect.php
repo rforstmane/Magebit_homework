@@ -15,7 +15,7 @@ $errors = array();
 
 
 
-function dump_and_die($arg)
+function dumpAndDie($arg)
 {
     echo "<pre>";
     var_dump($arg);
