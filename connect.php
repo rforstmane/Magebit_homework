@@ -3,15 +3,17 @@
 require_once ('Users.php');
 require_once ('App.php');
 require_once ('Attributes.php');
+require_once ('Connection.php');
 
 $instance = new App;
 $user = new Users($instance);
 $attribute = new Attributes($instance);
+$connection = new Connection;
 
 session_start();
 $errors = array();
 
-$connect = mysqli_connect('localhost', 'webuser', 'secretpassword', 'magebit');
+
 
 function dump_and_die($arg)
 {
@@ -36,4 +38,6 @@ if (isset($_GET['logout'])) {
 if (isset($_POST['submit'])) {
     $attribute->submit($_POST);
 }
+
+$connection->__construct();
 ?>
