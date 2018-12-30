@@ -24,7 +24,7 @@ $attr_rows = $attributes->getAttributesByUserId();
             <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
         </nav>
         <main class="main">
-            <?php include('errors.php'); ?>
+            <?php include('info.php'); ?>
             <div id="inputwrapper" class="input-wrapper">
                 <?php foreach ($attr_rows as $result) { ?>
                     <div class="row">

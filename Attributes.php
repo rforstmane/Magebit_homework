@@ -162,7 +162,7 @@ class Attributes
         $this->deleteRemovedInputs($all_inputs_array, $user_id, $this->dbConnection);
         $this->storeNewInputs($all_inputs_array, $user_id, $this->dbConnection);
         $this->updateExistingInputs($all_inputs_array, $user_id, $this->dbConnection);
-        $this->app->pushError("Changes saved successfully");
+        $this->app->pushInfo("Changes saved successfully");
     }
 }
 

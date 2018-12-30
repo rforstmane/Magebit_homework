@@ -347,6 +347,7 @@ body {
 .footer {
     margin-top: auto;
     padding: 5px 0;
+
 }
 
 .nav {
@@ -396,6 +397,11 @@ body {
 
 .error {
     color: red;
+    padding-bottom: 15px;
+}
+
+.info {
+    color: greenyellow;
     padding-bottom: 15px;
 }
 
