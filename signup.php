@@ -17,7 +17,8 @@
         </svg>
     </div>
     <div class="input-group">
-        <input autocomplete="off" class="input-group__input" type="email" name="email" value="<?php echo $user->email; ?>">
+        <input autocomplete="off" class="input-group__input" type="email" name="email"
+               value="<?php echo $user->email; ?>">
         <label class="input-group__label">
             <span class="input-group__label-text">Email</span>
         </label>
@@ -39,7 +40,6 @@
         </svg>
     </div>
     <div class="login-group">
-        <button class="login-group__button" type="submit" name="signup" value="foo" >SIGN UP</button>
+        <button class="login-group__button" type="submit" name="signup" value="foo">SIGN UP</button>
     </div>
-
 </form>

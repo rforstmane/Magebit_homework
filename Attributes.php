@@ -1,9 +1,9 @@
 <?php
 
-require_once ('Config.php');
+require_once('Config.php');
 
-class Attributes {
-
+class Attributes
+{
     private $dbConnection;
     private $app;
     public $user_id;
@@ -88,7 +88,8 @@ class Attributes {
         }
     }
 
-    public function getAttributesByUserId() {
+    public function getAttributesByUserId()
+    {
         $user_id = $_SESSION['user_id'];
         $attr_query = "SELECT * FROM attributes WHERE user_id ='$user_id' ";
         $attr_result = $this->dbConnection->query($attr_query);
@@ -131,7 +132,6 @@ class Attributes {
                 if ($old_version->keey != $potential_version->key || $old_version->value != $potential_version->value) {
                     $update_inputs_query = "UPDATE attributes SET keey ='$potential_version->key', value = '$potential_version->value' WHERE id='$potential_version->id'";
                     $this->dbConnection->query($update_inputs_query);
-
                 }
             }
         }
@@ -152,7 +152,8 @@ class Attributes {
     }
 
 
-    public function submit($post) {
+    public function submit($post)
+    {
         // lokals mainigais, lai vieglak stradat
         $user_id = $_SESSION['user_id'];
         // all inputs submitted form
@@ -163,9 +164,6 @@ class Attributes {
         $this->updateExistingInputs($all_inputs_array, $user_id, $this->dbConnection);
         $this->app->pushError("Changes saved successfully");
     }
-
-
-
 }
 
 ?>

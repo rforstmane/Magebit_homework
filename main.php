@@ -1,5 +1,5 @@
 <?php include('connect.php'); ?>
-<?php if(isset($_SESSION['name'])) {
+<?php if (isset($_SESSION['name'])) {
     header('location: logged_in');
 }
 
@@ -16,13 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 
 <body>
-
 <div class="wrapper">
-    <div class="auth-form <?php if(isset($_POST['signup']) || ($_POST['login'])) {
+    <div class="auth-form <?php if (isset($_POST['signup']) || ($_POST['login'])) {
         echo ' auth-form--error ';
     }; ?>">
         <div class="auth-form__column">
@@ -53,12 +51,11 @@
             <?php include('login.php'); ?>
         </div>
     </div>
-<?php include('footer.php'); ?>
+    <?php include('footer.php'); ?>
 </div>
 
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="main.js"></script>
 </body>
 

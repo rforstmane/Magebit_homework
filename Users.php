@@ -9,8 +9,7 @@ class Users
     public $name;
     public $email;
     public $password;
-
-
+    
     public function __construct($instance)
     {
         $this->name = "";

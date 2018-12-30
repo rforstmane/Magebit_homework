@@ -1,14 +1,14 @@
 <?php
 
-class Connection {
-
+class Connection
+{
     public $connect;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connect = new mysqli('localhost', 'webuser', 'secretpassword', 'magebit');
         return $this->connect;
     }
-
 }
 
 ?>

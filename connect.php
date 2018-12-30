@@ -1,9 +1,9 @@
 <?php
 
-require_once ('Users.php');
-require_once ('App.php');
-require_once ('Attributes.php');
-require_once ('Connection.php');
+require_once('Users.php');
+require_once('App.php');
+require_once('Attributes.php');
+require_once('Connection.php');
 
 $instance = new App;
 $user = new Users($instance);
@@ -12,8 +12,6 @@ $connection = new Connection;
 
 session_start();
 $errors = array();
-
-
 
 function dumpAndDie($arg)
 {
@@ -33,7 +31,6 @@ if (isset($_POST['login']) && !empty($_POST['login'])) {
 if (isset($_GET['logout'])) {
     $user->logout();
 }
-
 
 if (isset($_POST['submit'])) {
     $attribute->submit($_POST);

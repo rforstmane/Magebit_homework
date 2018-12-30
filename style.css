@@ -30,7 +30,6 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-
 ol, ul {
     list-style: none;
 }
@@ -75,6 +74,7 @@ body {
     color: #ffffff;
 
 }
+
 .auth-form--error {
     display: flex;
     flex-direction: column-reverse;
@@ -146,7 +146,6 @@ body {
     width: 50%;
     display: inline-block;
     text-align: center;
-
 }
 
 .button:hover, .button:hover {
@@ -175,7 +174,7 @@ body {
         bottom: -20px;
         background-color: #ffffff;
         box-shadow: 0px 0px 140px 0px rgba(50, 66, 91, 0.3);
-        transition:  0.8s linear;
+        transition: 0.8s linear;
     }
 
     .auth-form__modal--signup {
@@ -191,6 +190,7 @@ body {
     .form {
         padding: 0;
     }
+
     .auth-form__modal--login .form--login,
     .auth-form__modal--signup .form--login,
     .auth-form__modal--login .form--signup,
@@ -238,8 +238,6 @@ body {
         opacity: 0;
         pointer-events: none;
     }
-
-
 }
 
 .form__title {
@@ -368,7 +366,7 @@ body {
 .main {
     width: 100%;
     flex: 1 0 auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -379,7 +377,7 @@ body {
 }
 
 .main .button {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     width: auto;
 }
 
