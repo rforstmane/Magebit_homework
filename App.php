@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class App returns pushErrors and pushInfo comments
+ */
 class App
 {
     public $errors = [];

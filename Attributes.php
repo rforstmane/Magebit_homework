@@ -2,11 +2,18 @@
 
 require_once('Config.php');
 
+/**
+ * Class Attributes allows personal account to add, delete, update attributes
+ */
 class Attributes
 {
     private $dbConnection;
     private $app;
     public $user_id;
+    /**
+     * $keey instead of $key, because mySql does not allows to use key
+     * @var
+     */
     public $keey;
     public $value;
 
@@ -21,6 +28,14 @@ class Attributes
         $this->dbConnection->close();
     }
 
+    /**
+     * function get all parameters, converts as array by id to make easier to work with them
+     * @param $id_array
+     * @param $keey_array
+     * @param $value_array
+     * returns inputs as array
+     * @return array
+     */
     public function mergeFormInput($id_array, $keey_array, $value_array)
     {
         $all_inputs_array = [];
@@ -34,6 +49,12 @@ class Attributes
         return $all_inputs_array;
     }
 
+    /**
+     * this function goes through all inputs array, all empty ids will be new_inputs,
+     * then foreach loop goes through new_inputs and if they not empty, they will be added in database
+     * @param $inputs_array
+     * @param $user_id
+     */
     public function storeNewInputs($inputs_array, $user_id)
     {
         $new_inputs = [];
@@ -51,6 +72,11 @@ class Attributes
         }
     }
 
+    /**
+     * this function goes through all_inputs_array and returns saved inputs
+     * @param $inputs_array
+     * @return array
+     */
     public function getPotentialUpdated($inputs_array)
     {
         $potential_updated_inputs = [];
@@ -59,9 +85,15 @@ class Attributes
                 array_push($potential_updated_inputs, $item);
             }
         }
+//        dumpAndDie($potential_updated_inputs);
         return $potential_updated_inputs;
     }
 
+    /**
+     * this function returns ids from saved inputs
+     * @param $potential_updated_inputs
+     * @return string
+     */
     public function joinIds($potential_updated_inputs)
     {
         $id_array = [];
@@ -70,9 +102,16 @@ class Attributes
         }
 
         $result = join(", ", $id_array);
+//        dumpAndDie($result);
         return $result;
     }
 
+    /**
+     * this function from database gets all saved ids inputs values and returns as array
+     * @param $potential_updated_inputs
+     * @param $user_id
+     * @return array|mixed
+     */
     public function getOldInputs($potential_updated_inputs, $user_id)
     {
         $old_inputs_query = "SELECT * FROM attributes WHERE user_id='$user_id' AND id IN (" . $this->joinIds($potential_updated_inputs) . ") ";
@@ -82,12 +121,17 @@ class Attributes
             foreach ($old_inputs_rows as $i => $row) {
                 $old_inputs_rows[$i] = (object)$row;
             }
+//            dumpAndDie($old_inputs_rows);
             return $old_inputs_rows;
         } else {
             return [];
         }
     }
 
+    /**
+     * this function returns all logged_in user attributes as array from database
+     * @return mixed
+     */
     public function getAttributesByUserId()
     {
         $user_id = $_SESSION['user_id'];
@@ -95,9 +139,15 @@ class Attributes
         $attr_result = $this->dbConnection->query($attr_query);
         $attr_rows = $attr_result->fetch_all(MYSQLI_ASSOC);
 
+//        dumpAndDie($attr_rows);
         return $attr_rows;
     }
 
+    /**
+     * this function returns all logged_in user attributes as array from database
+     * @param $user_id
+     * @return mixed
+     */
     public function getAllAttributes($user_id)
     {
         $old_inputs_query = "SELECT * FROM attributes WHERE user_id ='$user_id' ";
@@ -107,9 +157,18 @@ class Attributes
         foreach ($old_inputs_rows as $i => $row) {
             $old_inputs_rows[$i] = (object)$row;
         }
+
+//        dumpAndDie($old_inputs_rows);
         return $old_inputs_rows;
+
     }
 
+    /**
+     * this function find inputs by id, if item has not id, then returns NULL
+     * @param $id
+     * @param $searchable_array
+     * @return null
+     */
     public function findInputById($id, $searchable_array)
     {
         foreach ($searchable_array as $item) {
@@ -120,10 +179,16 @@ class Attributes
         return null;
     }
 
+    /**
+     * this function compares inputs from database and inputs from account page and if they not similar, then attributes will be updated
+     * @param $inputs_array
+     * @param $user_id
+     */
     public function updateExistingInputs($inputs_array, $user_id)
     {
+
         $potential_updated_inputs = $this->getPotentialUpdated($inputs_array);
-        $old_inputs = $this->getOldInputs($potential_updated_inputs, $user_id, $this->dbConnection);
+        $old_inputs = $this->getOldInputs($potential_updated_inputs, $user_id);
 
         foreach ($potential_updated_inputs as $potential_version) {
             $old_version = $this->findInputById($potential_version->id, $old_inputs);
@@ -137,10 +202,15 @@ class Attributes
         }
     }
 
+    /**
+     * this function goes through all old_inputs and compares with potential_updated_inputs and if this value is NULL, then it will be deleted from database
+     * @param $inputs_array
+     * @param $user_id
+     */
     public function deleteRemovedInputs($inputs_array, $user_id)
     {
         $potential_updated_inputs = $this->getPotentialUpdated($inputs_array);
-        $old_inputs = $this->getAllAttributes($user_id, $this->dbConnection);
+        $old_inputs = $this->getAllAttributes($user_id);
 
         foreach ($old_inputs as $old_version) {
             $potential_version = $this->findInputById($old_version->id, $potential_updated_inputs);
@@ -152,16 +222,20 @@ class Attributes
     }
 
 
+    /**
+     * function submit all changes
+     * @param $post
+     */
     public function submit($post)
     {
         // lokals mainigais, lai vieglak stradat
         $user_id = $_SESSION['user_id'];
         // all inputs submitted form
-        $all_inputs_array = $this->mergeFormInput($post['id'], $post['keey'], $post['value'], $this->dbConnection);
+        $all_inputs_array = $this->mergeFormInput($post['id'], $post['keey'], $post['value']);
         // inputs which have been newly added
-        $this->deleteRemovedInputs($all_inputs_array, $user_id, $this->dbConnection);
-        $this->storeNewInputs($all_inputs_array, $user_id, $this->dbConnection);
-        $this->updateExistingInputs($all_inputs_array, $user_id, $this->dbConnection);
+        $this->deleteRemovedInputs($all_inputs_array, $user_id);
+        $this->storeNewInputs($all_inputs_array, $user_id);
+        $this->updateExistingInputs($all_inputs_array, $user_id);
         $this->app->pushInfo("Changes saved successfully");
     }
 }

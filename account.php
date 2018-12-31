@@ -3,17 +3,16 @@
     header('location: main');
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
-
 </head>
 <body>
+
 <?php
-
-
 $attributes = new Attributes($instance);
 $attr_rows = $attributes->getAttributesByUserId();
 ?>
@@ -30,8 +29,7 @@ $attr_rows = $attributes->getAttributesByUserId();
                     <div class="row">
                         <input type="hidden" name="id[]" value="<?php echo $result["id"]?>">
                         <input class="js-attribute-input" type="text" name="keey[]" value="<?php echo $result["keey"]; ?>"/>
-                        <input class="js-attribute-input" type="text" name="value[]"
-                               value="<?php echo $result["value"]; ?>"/>
+                        <input class="js-attribute-input" type="text" name="value[]" value="<?php echo $result["value"]; ?>"/>
                         <button class="delete">x</button>
                     </div>
                 <?php } ?>
@@ -47,7 +45,6 @@ $attr_rows = $attributes->getAttributesByUserId();
         <?php include('footer.php'); ?>
     </div>
 </form>
-
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

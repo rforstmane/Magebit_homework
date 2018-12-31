@@ -2,6 +2,9 @@
 
 require_once('Config.php');
 
+/**
+ * Class Users allows login and create new user
+ */
 class Users
 {
     private $dbConnection;
@@ -23,6 +26,11 @@ class Users
         $this->dbConnection->close();
     }
 
+    /**
+     * this function post request goes through all inputs fields, if there is some empty fields or similar email from database, appears error,
+     * if there is no errors, creates new user and new user can log in and redirect to logged_in page
+     * @param $post
+     */
     public function signup($post)
     {
         $this->name = $this->dbConnection->escape_string($post['name']);
@@ -61,6 +69,11 @@ class Users
         }
     }
 
+    /**
+     * this function post request goes through all inputs fields, if there is some empty fields, appears error,
+     * if there is no errors, user can log in and redirect to logged_in page
+     * @param $post
+     */
     public function login($post)
     {
         $this->email = $this->dbConnection->escape_string($post['email']);
@@ -90,6 +103,9 @@ class Users
         }
     }
 
+    /**
+     * in this function, when user clicks 'sign out', session destroy an user can log out from account
+     */
     public function logout()
     {
         session_destroy();
