@@ -132,7 +132,6 @@ class Attributes
     {
         foreach ($searchable_array as $item) {
             if ($item->id == $id) {
-                dumpAndDie($item);
                 return $item;
             }
         }
