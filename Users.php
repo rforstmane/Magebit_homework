@@ -63,7 +63,6 @@ class Users
             if ($this->dbConnection->query($sql)) {
                 $_SESSION['name'] = $this->name;
                 $_SESSION['user_id'] = $this->dbConnection->insert_id;
-                $_SESSION['success'] = "You are now logged in";
                 header('location: logged_in');
             }
         }

@@ -29,7 +29,7 @@ class Attributes
     }
 
     /**
-     * function get all parameters, converts as array by id to make easier to work with them
+     * function get all parameters (id, key, value) and converts as array by new id to make easier to work with them
      * @param $id_array
      * @param $keey_array
      * @param $value_array
@@ -46,6 +46,7 @@ class Attributes
             $object->value = $this->dbConnection->escape_string($value_array[$i]);
             array_push($all_inputs_array, $object);
         }
+
         return $all_inputs_array;
     }
 
@@ -73,7 +74,7 @@ class Attributes
     }
 
     /**
-     * this function goes through all_inputs_array and returns saved inputs
+     * this function goes through all_inputs_array and returns saved inputs whom have an id
      * @param $inputs_array
      * @return array
      */
@@ -85,51 +86,11 @@ class Attributes
                 array_push($potential_updated_inputs, $item);
             }
         }
-//        dumpAndDie($potential_updated_inputs);
         return $potential_updated_inputs;
     }
 
     /**
-     * this function returns ids from saved inputs
-     * @param $potential_updated_inputs
-     * @return string
-     */
-    public function joinIds($potential_updated_inputs)
-    {
-        $id_array = [];
-        foreach ($potential_updated_inputs as $item) {
-            array_push($id_array, $item->id);
-        }
-
-        $result = join(", ", $id_array);
-//        dumpAndDie($result);
-        return $result;
-    }
-
-    /**
-     * this function from database gets all saved ids inputs values and returns as array
-     * @param $potential_updated_inputs
-     * @param $user_id
-     * @return array|mixed
-     */
-    public function getOldInputs($potential_updated_inputs, $user_id)
-    {
-        $old_inputs_query = "SELECT * FROM attributes WHERE user_id='$user_id' AND id IN (" . $this->joinIds($potential_updated_inputs) . ") ";
-        $old_inputs_result = $this->dbConnection->query($old_inputs_query);
-        if ($old_inputs_result != false) {
-            $old_inputs_rows = $old_inputs_result->fetch_all(MYSQLI_ASSOC);
-            foreach ($old_inputs_rows as $i => $row) {
-                $old_inputs_rows[$i] = (object)$row;
-            }
-//            dumpAndDie($old_inputs_rows);
-            return $old_inputs_rows;
-        } else {
-            return [];
-        }
-    }
-
-    /**
-     * this function returns all logged_in user attributes as array from database
+     * this function returns all logged_in user attributes from database and shows in url
      * @return mixed
      */
     public function getAttributesByUserId()
@@ -139,12 +100,11 @@ class Attributes
         $attr_result = $this->dbConnection->query($attr_query);
         $attr_rows = $attr_result->fetch_all(MYSQLI_ASSOC);
 
-//        dumpAndDie($attr_rows);
         return $attr_rows;
     }
 
     /**
-     * this function returns all logged_in user attributes as array from database
+     * this function returns all logged_in user attributes from database
      * @param $user_id
      * @return mixed
      */
@@ -157,14 +117,12 @@ class Attributes
         foreach ($old_inputs_rows as $i => $row) {
             $old_inputs_rows[$i] = (object)$row;
         }
-
-//        dumpAndDie($old_inputs_rows);
         return $old_inputs_rows;
 
     }
 
     /**
-     * this function find inputs by id, if item has not id, then returns NULL
+     * this function compares two ids
      * @param $id
      * @param $searchable_array
      * @return null
@@ -186,9 +144,8 @@ class Attributes
      */
     public function updateExistingInputs($inputs_array, $user_id)
     {
-
         $potential_updated_inputs = $this->getPotentialUpdated($inputs_array);
-        $old_inputs = $this->getOldInputs($potential_updated_inputs, $user_id);
+        $old_inputs = $this->getAllAttributes($user_id);
 
         foreach ($potential_updated_inputs as $potential_version) {
             $old_version = $this->findInputById($potential_version->id, $old_inputs);
@@ -203,7 +160,7 @@ class Attributes
     }
 
     /**
-     * this function goes through all old_inputs and compares with potential_updated_inputs and if this value is NULL, then it will be deleted from database
+     * this function goes through all old_inputs ids and compares with potential_updated_inputs ids and if returns NULL, then it will be deleted from database
      * @param $inputs_array
      * @param $user_id
      */
@@ -221,18 +178,14 @@ class Attributes
         }
     }
 
-
     /**
      * function submit all changes
      * @param $post
      */
     public function submit($post)
     {
-        // lokals mainigais, lai vieglak stradat
         $user_id = $_SESSION['user_id'];
-        // all inputs submitted form
         $all_inputs_array = $this->mergeFormInput($post['id'], $post['keey'], $post['value']);
-        // inputs which have been newly added
         $this->deleteRemovedInputs($all_inputs_array, $user_id);
         $this->storeNewInputs($all_inputs_array, $user_id);
         $this->updateExistingInputs($all_inputs_array, $user_id);

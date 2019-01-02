@@ -11,7 +11,6 @@ $attribute = new Attributes($instance);
 $connection = new Connection;
 
 session_start();
-$errors = array();
 
 function dumpAndDie($arg)
 {

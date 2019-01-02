@@ -13,13 +13,6 @@
 </head>
 <body>
 <div class="wrapper">
-    <?php if (isset($_SESSION['success'])): ?>
-        <?php
-        echo $_SESSION['success'];
-        unset($_SESSION['success']);
-        ?>
-    <?php endif; ?>
-
     <?php if (isset($_SESSION['name'])): ?>
         <nav class="nav">
             <a href="account" class="nav__link">MY ACCOUNT</a>
