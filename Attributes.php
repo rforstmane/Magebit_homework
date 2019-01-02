@@ -104,7 +104,7 @@ class Attributes
     }
 
     /**
-     * this function returns all logged_in user attributes from database
+     * this function returns all logged_in user attributes from database as object
      * @param $user_id
      * @return mixed
      */
@@ -117,12 +117,13 @@ class Attributes
         foreach ($old_inputs_rows as $i => $row) {
             $old_inputs_rows[$i] = (object)$row;
         }
+
         return $old_inputs_rows;
 
     }
 
     /**
-     * this function compares two ids
+     * this function compares two ids, if they are similar, then returns searchable array
      * @param $id
      * @param $searchable_array
      * @return null
@@ -131,6 +132,7 @@ class Attributes
     {
         foreach ($searchable_array as $item) {
             if ($item->id == $id) {
+                dumpAndDie($item);
                 return $item;
             }
         }
@@ -160,7 +162,7 @@ class Attributes
     }
 
     /**
-     * this function goes through all old_inputs ids and compares with potential_updated_inputs ids and if returns NULL, then it will be deleted from database
+     * this function goes through all old_inputs ids and compares with potential_updated_inputs ids and if potential_updated_inputs returns NULL, then it will be deleted from database
      * @param $inputs_array
      * @param $user_id
      */

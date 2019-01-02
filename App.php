@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class App returns pushErrors and pushInfo comments
+ * Class App returns comments and information in web page
  */
 class App
 {
