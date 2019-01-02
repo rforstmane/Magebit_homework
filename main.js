@@ -19,19 +19,16 @@ function blurHandler() {
     }
 }
 
-
 $("#js-form-right").on("click", function () {
     $(".error").remove();
     $(".auth-form__modal").addClass("auth-form__modal--login")
     $(".auth-form__modal").removeClass("auth-form__modal--signup")
-
 })
 
 $("#js-form-left").on("click", function () {
     $(".error").remove();
     $(".auth-form__modal").addClass("auth-form__modal--signup")
     $(".auth-form__modal").removeClass("auth-form__modal--login")
-
 })
 
 function deleteRowKeepLast(event) {
