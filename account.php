@@ -20,6 +20,7 @@ $attr_rows = $attributes->getAttributesByUserId();
 <form method="post" action="account">
     <div class="wrapper">
         <nav class="nav">
+            <a href="logged_in" class="nav__link">HOME</a>
             <a href="logged_in.php?logout='1'" class="nav__link">SIGN OUT</a>
         </nav>
         <main class="main">
